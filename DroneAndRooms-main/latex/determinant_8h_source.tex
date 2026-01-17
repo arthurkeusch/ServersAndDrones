@@ -1,0 +1,45 @@
+\doxysection{determinant.\+h}
+\hypertarget{determinant_8h_source}{}\label{determinant_8h_source}\mbox{\hyperlink{determinant_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00001}00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00002}00002\ \textcolor{comment}{//\ Created\ by\ bpiranda\ on\ 22/11/2019.}}
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00003}00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00005}00005\ \textcolor{preprocessor}{\#ifndef\ GEOMETRY\_TRIANGULATION\_GL\_DETERMINANT\_H}}
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00006}00006\ \textcolor{preprocessor}{\#define\ GEOMETRY\_TRIANGULATION\_GL\_DETERMINANT\_H}}
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00008}00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_matrix33}{Matrix33}};}
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00009}00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_matrix44}{Matrix44}};}
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00011}\mbox{\hyperlink{class_matrix22}{00011}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_matrix22}{Matrix22}}\ \{}
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00012}00012\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00013}\mbox{\hyperlink{class_matrix22_af43a553822d93f8d38fdf057603be0ae}{00013}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_matrix22_af43a553822d93f8d38fdf057603be0ae}{m}}[2][2];}
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00015}00015\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_matrix22_a847e41917439faa7d5707bbf1332b5a0}{get2x2From3x3}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_matrix33}{Matrix33}}\ \&mat33,\textcolor{keywordtype}{int}\ shadowLin,\ \textcolor{keywordtype}{int}\ shadowCol);}
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00016}\mbox{\hyperlink{class_matrix22_ad18ae363d30a93115d9ac2fb53e6e71a}{00016}}\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_matrix22_ad18ae363d30a93115d9ac2fb53e6e71a}{determinant}}()\ \{}
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_matrix22_af43a553822d93f8d38fdf057603be0ae}{m}}[0][0]*\mbox{\hyperlink{class_matrix22_af43a553822d93f8d38fdf057603be0ae}{m}}[1][1]-\/\mbox{\hyperlink{class_matrix22_af43a553822d93f8d38fdf057603be0ae}{m}}[0][1]*\mbox{\hyperlink{class_matrix22_af43a553822d93f8d38fdf057603be0ae}{m}}[1][0];}
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00018}00018\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00019}00019\ \};}
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00021}\mbox{\hyperlink{class_matrix33}{00021}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_matrix33}{Matrix33}}\ \{}
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00022}00022\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00023}\mbox{\hyperlink{class_matrix33_a78b7575191a5193b403a29a387ea9012}{00023}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_matrix33_a78b7575191a5193b403a29a387ea9012}{m}}[3][3];}
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00025}00025\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_matrix33_af5d566e26f06afb7937b70fc86d568dd}{get3x3From4x4}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_matrix44}{Matrix44}}\ \&mat44,\textcolor{keywordtype}{int}\ shadowLin,\ \textcolor{keywordtype}{int}\ shadowCol);}
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00026}00026\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_matrix33_a91bdfd4a4ea7467fbb843761a830f090}{determinant}}();}
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00027}00027\ \};}
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00029}\mbox{\hyperlink{class_matrix44}{00029}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_matrix44}{Matrix44}}\ \{}
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00030}00030\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00031}\mbox{\hyperlink{class_matrix44_a5fa44c68088fb376f652e59cf085b749}{00031}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_matrix44_a5fa44c68088fb376f652e59cf085b749}{m}}[4][4];}
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00033}00033\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_matrix44_aa04b9a3ed2ab380ba4aa3b91d514c4cd}{determinant}}();}
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00034}00034\ \};}
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{determinant_8h_source_l00040}00040\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//GEOMETRY\_TRIANGULATION\_GL\_DETERMINANT\_H}}
+
+\end{DoxyCode}

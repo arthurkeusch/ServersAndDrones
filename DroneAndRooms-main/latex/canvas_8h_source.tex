@@ -1,0 +1,55 @@
+\doxysection{canvas.\+h}
+\hypertarget{canvas_8h_source}{}\label{canvas_8h_source}\mbox{\hyperlink{canvas_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ CANVAS\_H}}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ CANVAS\_H}}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <QWidget>}}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <QMouseEvent>}}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <QPaintEvent>}}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{serveranddrone_8h}{serveranddrone.h}}>}}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00009}\mbox{\hyperlink{class_canvas}{00009}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_canvas_aeea65f2bfc2be61bdbcaaa3a67c33185}{Canvas}}\ :\ \textcolor{keyword}{public}\ QWidget\ \{}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00010}00010\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00011}00011\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00012}00012\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_canvas_aeea65f2bfc2be61bdbcaaa3a67c33185}{Canvas}}(QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00013}\mbox{\hyperlink{class_canvas_a237c4549ad2e27c729cd1f71e89f0fd9}{00013}}\ \ \ \ \ \mbox{\hyperlink{class_canvas_a237c4549ad2e27c729cd1f71e89f0fd9}{\string~Canvas}}()\ \{}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00014}00014\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_canvas_ac4559a6535f497f17415032632aa9f6a}{clear}}();}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00015}00015\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00017}\mbox{\hyperlink{class_canvas_ac4559a6535f497f17415032632aa9f6a}{00017}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_canvas_ac4559a6535f497f17415032632aa9f6a}{clear}}()\ \{}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00018}00018\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \&l:\mbox{\hyperlink{class_canvas_ad373141fd1ac9d478a6c5b36af7e30da}{links}})\ \{}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ l;}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00020}00020\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00021}00021\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_canvas_ad373141fd1ac9d478a6c5b36af7e30da}{links}}.clear();}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00022}00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_canvas_a44899dfd7436c86e31e65430869aa511}{drones}}.clear();}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00023}00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_canvas_aaf24f55c610e69d1dc0494cf34c67294}{servers}}.clear();}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00024}00024\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00025}\mbox{\hyperlink{class_canvas_a4c8f1b5bdbffb5930d0b91e2f5cf57ed}{00025}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_canvas_a4c8f1b5bdbffb5930d0b91e2f5cf57ed}{setWindow}}(\textcolor{keyword}{const}\ QPoint\ \&origin,\ \textcolor{keyword}{const}\ QSize\ \&size)\ \{}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00026}00026\ \ \ \ \ \ \ \ \ windowOrigin=origin;}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00027}00027\ \ \ \ \ \ \ \ \ windowSize=size;}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00028}00028\ \ \ \ \ \ \ \ \ windowScale=\{qreal(width())/windowSize.width(),qreal(height())/windowSize.height()\};}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00029}00029\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00030}\mbox{\hyperlink{class_canvas_aa4c73c8325eabe4e517a6c1e427ac42d}{00030}}\ \ \ \ \ QPoint\ \mbox{\hyperlink{class_canvas_aa4c73c8325eabe4e517a6c1e427ac42d}{getOrigin}}()\ \{\ \textcolor{keywordflow}{return}\ windowOrigin;\ \}}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00031}\mbox{\hyperlink{class_canvas_a0d35aa520988c33a641a971a6b922335}{00031}}\ \ \ \ \ QSize\ \mbox{\hyperlink{class_canvas_a0d35aa520988c33a641a971a6b922335}{getSize}}()\ \{\ \textcolor{keywordflow}{return}\ windowSize;\ \}}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00032}00032\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_canvas_a743fefef4af18260e8d56d95f92618aa}{paintEvent}}(QPaintEvent*)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00033}00033\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_canvas_af6760030ef7aaf5cf73e89fbb55bee26}{resizeEvent}}(QResizeEvent\ *event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00034}00034\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_canvas_ac766a4e369f781943df021b80e5922c4}{mousePressEvent}}(QMouseEvent\ *event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00036}\mbox{\hyperlink{class_canvas_aaf24f55c610e69d1dc0494cf34c67294}{00036}}\ \ \ \ \ QList<Server>\ \mbox{\hyperlink{class_canvas_aaf24f55c610e69d1dc0494cf34c67294}{servers}};}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00037}\mbox{\hyperlink{class_canvas_a44899dfd7436c86e31e65430869aa511}{00037}}\ \ \ \ \ QList<Drone>\ \mbox{\hyperlink{class_canvas_a44899dfd7436c86e31e65430869aa511}{drones}};}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00038}\mbox{\hyperlink{class_canvas_ad373141fd1ac9d478a6c5b36af7e30da}{00038}}\ \ \ \ \ QList<Link*>\ \mbox{\hyperlink{class_canvas_ad373141fd1ac9d478a6c5b36af7e30da}{links}};}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00039}\mbox{\hyperlink{class_canvas_a22582f3888250ffb94a6de0212d74a94}{00039}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_canvas_a22582f3888250ffb94a6de0212d74a94}{showGraph}}=\textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00040}00040\ signals:}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00042}00042\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00043}00043\ \ \ \ \ QPoint\ windowOrigin;}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00044}00044\ \ \ \ \ QSize\ windowSize;}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00045}00045\ \ \ \ \ QSizeF\ windowScale;}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00046}00046\ \ \ \ \ qreal\ droneIconSize;}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00047}00047\ \ \ \ \ QImage\ droneImg;\ }
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00048}00048\ \};}
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{canvas_8h_source_l00050}00050\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CANVAS\_H}}
+
+\end{DoxyCode}

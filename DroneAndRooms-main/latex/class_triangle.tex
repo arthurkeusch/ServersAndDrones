@@ -1,0 +1,406 @@
+\doxysection{Triangle Class Reference}
+\hypertarget{class_triangle}{}\label{class_triangle}\index{Triangle@{Triangle}}
+
+
+The \doxylink{class_triangle}{Triangle} class stores 3 pointers to existing \doxylink{class_vector2_d}{Vector2D} vertices. It is used by the \doxylink{class_polygon}{Polygon} class to create a set of internal triangles.  
+
+
+
+
+{\ttfamily \#include $<$polygon.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_triangle_ad7c90ec4fd75d4aa80fbd3ac78a3cf0b}{Triangle}} (const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&p\+\_\+p0, const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&p\+\_\+p1, const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&p\+\_\+p2)
+\begin{DoxyCompactList}\small\item\em Constuctor of triangle with pointers to vertices,. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_triangle_a5ce0d3dda37977e881560fc2b1f4d06c}{update}} (const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&p\+\_\+p0, const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&p\+\_\+p1, const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&p\+\_\+p2)
+\item 
+void \mbox{\hyperlink{class_triangle_abc1d2380e0daf2b13ef96e3e89f01a2d}{compute\+Circle}} ()
+\item 
+\mbox{\hyperlink{class_vector2_d}{Vector2D}} \mbox{\hyperlink{class_triangle_a1cd5f240a136135fbe8b0532253ceeee}{operator\mbox{[}$\,$\mbox{]}}} (int i) const
+\begin{DoxyCompactList}\small\item\em operator \mbox{[}\mbox{]} to get vertex \#i coordinates \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_triangle_aece1b4aed67a375477b3e9a27615602c}{is\+CCW}} ()
+\begin{DoxyCompactList}\small\item\em is\+CCW\+: equivalent to check if the third point is on the left of the first edge \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_triangle_ab7cc1c7ee3ae5c8f0791e450ccece646}{contains\+One\+Of}} (const QList$<$ \mbox{\hyperlink{class_vector2_d}{Vector2D}} \texorpdfstring{$\ast$}{*} $>$ \&lst)
+\begin{DoxyCompactList}\small\item\em contains \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_triangle_ac1389397f3d8178951a6a30abcc90c14}{contains}} (const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&ptr\+Pt) const
+\item 
+bool \mbox{\hyperlink{class_triangle_a700145422a1c964a70fae2637fe4619f}{is\+On\+The\+Left}} (const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&p, int i) const
+\begin{DoxyCompactList}\small\item\em is\+On\+The\+Left \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_triangle_abc3785b96e03fde1b5f594f8ed6afabb}{print}} ()
+\item 
+double \mbox{\hyperlink{class_triangle_a5b86d43152f84325da7c657650e1f3f1}{area}} () const
+\begin{DoxyCompactList}\small\item\em area \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_triangle_aff1adbe2ac0aa1e86e455677a01c9e67}{set\+Delaunay}} (bool d, bool f)
+\item 
+bool \mbox{\hyperlink{class_triangle_a0684af02c728a46e5f2560f59a807e42}{can\+Be\+Flipped}} ()
+\item 
+bool \mbox{\hyperlink{class_triangle_a6cd8236a25745922faf396bf4bbd6ded}{check\+Delaunay}} (const QVector$<$ \mbox{\hyperlink{class_vector2_d}{Vector2D}} $>$ \&tab\+Vertices)
+\item 
+\mbox{\hyperlink{class_vector2_d}{Vector2D}} \mbox{\hyperlink{class_triangle_a76ddb58b367b4c8464a37d567e9941ca}{get\+Next\+Vertex}} (const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&pt) const
+\item 
+\mbox{\hyperlink{class_vector2_d}{Vector2D}} \mbox{\hyperlink{class_triangle_a633a1fe1e094c57b1d04e4845afc4d8e}{get\+Prev\+Vertex}} (const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&pt) const
+\item 
+bool \mbox{\hyperlink{class_triangle_a7715e13bb0a83af49b017f5263e03b7b}{has\+Edge}} (const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&A, const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&B) const
+\item 
+bool \mbox{\hyperlink{class_triangle_a8f527cdb5a9876aadf251c3fa3d230d3}{has\+Vertex}} (const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&M) const
+\item 
+bool \mbox{\hyperlink{class_triangle_ac627bebcd4c69f22e652ba3661e19343}{operator==}} (const \mbox{\hyperlink{class_triangle}{Triangle}} \&other) const
+\item 
+bool \mbox{\hyperlink{class_triangle_a71dd9ecc4d9255bcbc3b47ca14bba482}{circle\+Contains}} (const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&M)
+\item 
+\mbox{\hyperlink{class_vector2_d}{Vector2D}} \mbox{\hyperlink{class_triangle_a5b9ee1870feb5dc1b1dcd84791f539cc}{get\+Center}} () const
+\item 
+\mbox{\hyperlink{class_vector2_d}{Vector2D}} \mbox{\hyperlink{class_triangle_ad19e67d5fa60401d111c995ede615261}{get\+Edge\+To}} (const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&p) const
+\item 
+\mbox{\hyperlink{class_vector2_d}{Vector2D}} \mbox{\hyperlink{class_triangle_a9dc4b8b9bf820d8a5f1cf3d618964247}{get\+Edge\+From}} (const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&p) const
+\item 
+\mbox{\hyperlink{class_vector2_d}{Vector2D}} \mbox{\hyperlink{class_triangle_aee8d72faa2afd283d42d9787eb86bbe3}{next\+Edge\+Normal}} (const \mbox{\hyperlink{class_vector2_d}{Vector2D}} pt) const
+\item 
+\mbox{\hyperlink{class_vector2_d}{Vector2D}} \mbox{\hyperlink{class_triangle_a2a18a9d536f91f3307893cc9e45de358}{previous\+Edge\+Normal}} (const \mbox{\hyperlink{class_vector2_d}{Vector2D}} pt) const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{class_triangle}{Triangle} class stores 3 pointers to existing \doxylink{class_vector2_d}{Vector2D} vertices. It is used by the \doxylink{class_polygon}{Polygon} class to create a set of internal triangles. 
+
+\begin{DoxyAuthor}{Author}
+Benoît Piranda 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+7/11/2024 
+\end{DoxyDate}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000002}{Todo}}]Make more tests of the triangulation algorithm with complex shapes. \end{DoxyRefDesc}
+
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00018}{18}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_triangle_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_triangle_ad7c90ec4fd75d4aa80fbd3ac78a3cf0b}\index{Triangle@{Triangle}!Triangle@{Triangle}}
+\index{Triangle@{Triangle}!Triangle@{Triangle}}
+\doxysubsubsection{\texorpdfstring{Triangle()}{Triangle()}}
+{\footnotesize\ttfamily \label{class_triangle_ad7c90ec4fd75d4aa80fbd3ac78a3cf0b} 
+Triangle\+::\+Triangle (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&}]{p\+\_\+p0}{, }\item[{const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&}]{p\+\_\+p1}{, }\item[{const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&}]{p\+\_\+p2}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constuctor of triangle with pointers to vertices,. 
+
+\begin{DoxyWarning}{Warning}
+The order of vertices must be CCW 
+\end{DoxyWarning}
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+p0} & P0 \\
+\hline
+{\em p\+\_\+p1} & P1 \\
+\hline
+{\em p\+\_\+p2} & P2 \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00032}{32}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_triangle_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_triangle_a5b86d43152f84325da7c657650e1f3f1}\index{Triangle@{Triangle}!area@{area}}
+\index{area@{area}!Triangle@{Triangle}}
+\doxysubsubsection{\texorpdfstring{area()}{area()}}
+{\footnotesize\ttfamily \label{class_triangle_a5b86d43152f84325da7c657650e1f3f1} 
+double Triangle\+::area (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+area 
+
+\begin{DoxyWarning}{Warning}
+the area is in u square. (u=10 pixels). 
+\end{DoxyWarning}
+\begin{DoxyReturn}{Returns}
+the surface of the triangle 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00102}{102}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+\Hypertarget{class_triangle_a0684af02c728a46e5f2560f59a807e42}\index{Triangle@{Triangle}!canBeFlipped@{canBeFlipped}}
+\index{canBeFlipped@{canBeFlipped}!Triangle@{Triangle}}
+\doxysubsubsection{\texorpdfstring{canBeFlipped()}{canBeFlipped()}}
+{\footnotesize\ttfamily \label{class_triangle_a0684af02c728a46e5f2560f59a807e42} 
+bool Triangle\+::can\+Be\+Flipped (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00112}{112}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+\Hypertarget{class_triangle_a6cd8236a25745922faf396bf4bbd6ded}\index{Triangle@{Triangle}!checkDelaunay@{checkDelaunay}}
+\index{checkDelaunay@{checkDelaunay}!Triangle@{Triangle}}
+\doxysubsubsection{\texorpdfstring{checkDelaunay()}{checkDelaunay()}}
+{\footnotesize\ttfamily \label{class_triangle_a6cd8236a25745922faf396bf4bbd6ded} 
+bool Triangle\+::check\+Delaunay (\begin{DoxyParamCaption}\item[{const QVector$<$ \mbox{\hyperlink{class_vector2_d}{Vector2D}} $>$ \&}]{tab\+Vertices}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00115}{115}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+\Hypertarget{class_triangle_a71dd9ecc4d9255bcbc3b47ca14bba482}\index{Triangle@{Triangle}!circleContains@{circleContains}}
+\index{circleContains@{circleContains}!Triangle@{Triangle}}
+\doxysubsubsection{\texorpdfstring{circleContains()}{circleContains()}}
+{\footnotesize\ttfamily \label{class_triangle_a71dd9ecc4d9255bcbc3b47ca14bba482} 
+bool Triangle\+::circle\+Contains (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&}]{M}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00150}{150}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+\Hypertarget{class_triangle_abc1d2380e0daf2b13ef96e3e89f01a2d}\index{Triangle@{Triangle}!computeCircle@{computeCircle}}
+\index{computeCircle@{computeCircle}!Triangle@{Triangle}}
+\doxysubsubsection{\texorpdfstring{computeCircle()}{computeCircle()}}
+{\footnotesize\ttfamily \label{class_triangle_abc1d2380e0daf2b13ef96e3e89f01a2d} 
+void Triangle\+::compute\+Circle (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{polygon_8cpp_source_l00275}{275}} of file \mbox{\hyperlink{polygon_8cpp_source}{polygon.\+cpp}}.
+
+\Hypertarget{class_triangle_ac1389397f3d8178951a6a30abcc90c14}\index{Triangle@{Triangle}!contains@{contains}}
+\index{contains@{contains}!Triangle@{Triangle}}
+\doxysubsubsection{\texorpdfstring{contains()}{contains()}}
+{\footnotesize\ttfamily \label{class_triangle_ac1389397f3d8178951a6a30abcc90c14} 
+bool Triangle\+::contains (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&}]{ptr\+Pt}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00075}{75}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+\Hypertarget{class_triangle_ab7cc1c7ee3ae5c8f0791e450ccece646}\index{Triangle@{Triangle}!containsOneOf@{containsOneOf}}
+\index{containsOneOf@{containsOneOf}!Triangle@{Triangle}}
+\doxysubsubsection{\texorpdfstring{containsOneOf()}{containsOneOf()}}
+{\footnotesize\ttfamily \label{class_triangle_ab7cc1c7ee3ae5c8f0791e450ccece646} 
+bool Triangle\+::contains\+One\+Of (\begin{DoxyParamCaption}\item[{const QList$<$ \mbox{\hyperlink{class_vector2_d}{Vector2D}} \texorpdfstring{$\ast$}{*} $>$ \&}]{lst}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+contains 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lst} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if one or more position of lst is inside the triangle 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00067}{67}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+\Hypertarget{class_triangle_a5b9ee1870feb5dc1b1dcd84791f539cc}\index{Triangle@{Triangle}!getCenter@{getCenter}}
+\index{getCenter@{getCenter}!Triangle@{Triangle}}
+\doxysubsubsection{\texorpdfstring{getCenter()}{getCenter()}}
+{\footnotesize\ttfamily \label{class_triangle_a5b9ee1870feb5dc1b1dcd84791f539cc} 
+\mbox{\hyperlink{class_vector2_d}{Vector2D}} Triangle\+::get\+Center (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00166}{166}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+\Hypertarget{class_triangle_a9dc4b8b9bf820d8a5f1cf3d618964247}\index{Triangle@{Triangle}!getEdgeFrom@{getEdgeFrom}}
+\index{getEdgeFrom@{getEdgeFrom}!Triangle@{Triangle}}
+\doxysubsubsection{\texorpdfstring{getEdgeFrom()}{getEdgeFrom()}}
+{\footnotesize\ttfamily \label{class_triangle_a9dc4b8b9bf820d8a5f1cf3d618964247} 
+\mbox{\hyperlink{class_vector2_d}{Vector2D}} Triangle\+::get\+Edge\+From (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&}]{p}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00176}{176}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+\Hypertarget{class_triangle_ad19e67d5fa60401d111c995ede615261}\index{Triangle@{Triangle}!getEdgeTo@{getEdgeTo}}
+\index{getEdgeTo@{getEdgeTo}!Triangle@{Triangle}}
+\doxysubsubsection{\texorpdfstring{getEdgeTo()}{getEdgeTo()}}
+{\footnotesize\ttfamily \label{class_triangle_ad19e67d5fa60401d111c995ede615261} 
+\mbox{\hyperlink{class_vector2_d}{Vector2D}} Triangle\+::get\+Edge\+To (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&}]{p}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00169}{169}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+\Hypertarget{class_triangle_a76ddb58b367b4c8464a37d567e9941ca}\index{Triangle@{Triangle}!getNextVertex@{getNextVertex}}
+\index{getNextVertex@{getNextVertex}!Triangle@{Triangle}}
+\doxysubsubsection{\texorpdfstring{getNextVertex()}{getNextVertex()}}
+{\footnotesize\ttfamily \label{class_triangle_a76ddb58b367b4c8464a37d567e9941ca} 
+\mbox{\hyperlink{class_vector2_d}{Vector2D}} Triangle\+::get\+Next\+Vertex (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&}]{pt}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00124}{124}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+\Hypertarget{class_triangle_a633a1fe1e094c57b1d04e4845afc4d8e}\index{Triangle@{Triangle}!getPrevVertex@{getPrevVertex}}
+\index{getPrevVertex@{getPrevVertex}!Triangle@{Triangle}}
+\doxysubsubsection{\texorpdfstring{getPrevVertex()}{getPrevVertex()}}
+{\footnotesize\ttfamily \label{class_triangle_a633a1fe1e094c57b1d04e4845afc4d8e} 
+\mbox{\hyperlink{class_vector2_d}{Vector2D}} Triangle\+::get\+Prev\+Vertex (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&}]{pt}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00131}{131}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+\Hypertarget{class_triangle_a7715e13bb0a83af49b017f5263e03b7b}\index{Triangle@{Triangle}!hasEdge@{hasEdge}}
+\index{hasEdge@{hasEdge}!Triangle@{Triangle}}
+\doxysubsubsection{\texorpdfstring{hasEdge()}{hasEdge()}}
+{\footnotesize\ttfamily \label{class_triangle_a7715e13bb0a83af49b017f5263e03b7b} 
+bool Triangle\+::has\+Edge (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&}]{A}{, }\item[{const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&}]{B}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00137}{137}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+\Hypertarget{class_triangle_a8f527cdb5a9876aadf251c3fa3d230d3}\index{Triangle@{Triangle}!hasVertex@{hasVertex}}
+\index{hasVertex@{hasVertex}!Triangle@{Triangle}}
+\doxysubsubsection{\texorpdfstring{hasVertex()}{hasVertex()}}
+{\footnotesize\ttfamily \label{class_triangle_a8f527cdb5a9876aadf251c3fa3d230d3} 
+bool Triangle\+::has\+Vertex (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&}]{M}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00142}{142}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+\Hypertarget{class_triangle_aece1b4aed67a375477b3e9a27615602c}\index{Triangle@{Triangle}!isCCW@{isCCW}}
+\index{isCCW@{isCCW}!Triangle@{Triangle}}
+\doxysubsubsection{\texorpdfstring{isCCW()}{isCCW()}}
+{\footnotesize\ttfamily \label{class_triangle_aece1b4aed67a375477b3e9a27615602c} 
+bool Triangle\+::is\+CCW (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+is\+CCW\+: equivalent to check if the third point is on the left of the first edge 
+
+\begin{DoxyReturn}{Returns}
+true if the triangle is Counterclock Wise oriented 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00056}{56}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+\Hypertarget{class_triangle_a700145422a1c964a70fae2637fe4619f}\index{Triangle@{Triangle}!isOnTheLeft@{isOnTheLeft}}
+\index{isOnTheLeft@{isOnTheLeft}!Triangle@{Triangle}}
+\doxysubsubsection{\texorpdfstring{isOnTheLeft()}{isOnTheLeft()}}
+{\footnotesize\ttfamily \label{class_triangle_a700145422a1c964a70fae2637fe4619f} 
+bool Triangle\+::is\+On\+The\+Left (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&}]{p}{, }\item[{int}]{i}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+is\+On\+The\+Left 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & tested point \\
+\hline
+{\em i} & the number of the edge (P\+\_\+i\+P\+\_\+\{i+1\}) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if p is on the left of the edge P\+\_\+i\+P\+\_\+\{i+1\} 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00086}{86}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+\Hypertarget{class_triangle_aee8d72faa2afd283d42d9787eb86bbe3}\index{Triangle@{Triangle}!nextEdgeNormal@{nextEdgeNormal}}
+\index{nextEdgeNormal@{nextEdgeNormal}!Triangle@{Triangle}}
+\doxysubsubsection{\texorpdfstring{nextEdgeNormal()}{nextEdgeNormal()}}
+{\footnotesize\ttfamily \label{class_triangle_aee8d72faa2afd283d42d9787eb86bbe3} 
+\mbox{\hyperlink{class_vector2_d}{Vector2D}} Triangle\+::next\+Edge\+Normal (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_vector2_d}{Vector2D}}}]{pt}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00183}{183}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+\Hypertarget{class_triangle_ac627bebcd4c69f22e652ba3661e19343}\index{Triangle@{Triangle}!operator==@{operator==}}
+\index{operator==@{operator==}!Triangle@{Triangle}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily \label{class_triangle_ac627bebcd4c69f22e652ba3661e19343} 
+bool Triangle\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_triangle}{Triangle}} \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00145}{145}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+\Hypertarget{class_triangle_a1cd5f240a136135fbe8b0532253ceeee}\index{Triangle@{Triangle}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!Triangle@{Triangle}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}}
+{\footnotesize\ttfamily \label{class_triangle_a1cd5f240a136135fbe8b0532253ceeee} 
+\mbox{\hyperlink{class_vector2_d}{Vector2D}} Triangle\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{int}]{i}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+operator \mbox{[}\mbox{]} to get vertex \#i coordinates 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vertex \#i coordinates. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00050}{50}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+\Hypertarget{class_triangle_a2a18a9d536f91f3307893cc9e45de358}\index{Triangle@{Triangle}!previousEdgeNormal@{previousEdgeNormal}}
+\index{previousEdgeNormal@{previousEdgeNormal}!Triangle@{Triangle}}
+\doxysubsubsection{\texorpdfstring{previousEdgeNormal()}{previousEdgeNormal()}}
+{\footnotesize\ttfamily \label{class_triangle_a2a18a9d536f91f3307893cc9e45de358} 
+\mbox{\hyperlink{class_vector2_d}{Vector2D}} Triangle\+::previous\+Edge\+Normal (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_vector2_d}{Vector2D}}}]{pt}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00190}{190}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+\Hypertarget{class_triangle_abc3785b96e03fde1b5f594f8ed6afabb}\index{Triangle@{Triangle}!print@{print}}
+\index{print@{print}!Triangle@{Triangle}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily \label{class_triangle_abc3785b96e03fde1b5f594f8ed6afabb} 
+void Triangle\+::print (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00092}{92}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+\Hypertarget{class_triangle_aff1adbe2ac0aa1e86e455677a01c9e67}\index{Triangle@{Triangle}!setDelaunay@{setDelaunay}}
+\index{setDelaunay@{setDelaunay}!Triangle@{Triangle}}
+\doxysubsubsection{\texorpdfstring{setDelaunay()}{setDelaunay()}}
+{\footnotesize\ttfamily \label{class_triangle_aff1adbe2ac0aa1e86e455677a01c9e67} 
+void Triangle\+::set\+Delaunay (\begin{DoxyParamCaption}\item[{bool}]{d}{, }\item[{bool}]{f}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00108}{108}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+\Hypertarget{class_triangle_a5ce0d3dda37977e881560fc2b1f4d06c}\index{Triangle@{Triangle}!update@{update}}
+\index{update@{update}!Triangle@{Triangle}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{class_triangle_a5ce0d3dda37977e881560fc2b1f4d06c} 
+void Triangle\+::update (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&}]{p\+\_\+p0}{, }\item[{const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&}]{p\+\_\+p1}{, }\item[{const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&}]{p\+\_\+p2}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00038}{38}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{polygon_8h}{polygon.\+h}}\item 
+\mbox{\hyperlink{polygon_8cpp}{polygon.\+cpp}}\end{DoxyCompactItemize}

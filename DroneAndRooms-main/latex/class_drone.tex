@@ -1,0 +1,134 @@
+\doxysection{Drone Class Reference}
+\hypertarget{class_drone}{}\label{class_drone}\index{Drone@{Drone}}
+
+
+{\ttfamily \#include $<$serveranddrone.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_drone_aa751c1737fd884fa174062840b44b77a}{move}} (qreal dt)
+\begin{DoxyCompactList}\small\item\em Moves the drone toward its destination. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_server}{Server}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_drone_a5b9999237d302e66a007834d662f087f}{overflown\+Area}} (QList$<$ \mbox{\hyperlink{class_server}{Server}} $>$ \&list)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+QString \mbox{\hyperlink{class_drone_a72a835041f01fd55b8a315a6b811881b}{name}}
+\item 
+\mbox{\hyperlink{class_vector2_d}{Vector2D}} \mbox{\hyperlink{class_drone_a1c4e77ec65b47ddaae2a0e2d29f5ea6a}{position}}
+\item 
+\mbox{\hyperlink{class_server}{Server}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_drone_a45ccef49593fe018527704107b3b25f7}{target}}
+\item 
+qreal \mbox{\hyperlink{class_drone_adb35c0604f9e7fd1b35fc6bd3fb740a7}{azimut}} =0
+\item 
+\mbox{\hyperlink{class_vector2_d}{Vector2D}} \mbox{\hyperlink{class_drone_aa95e5b01daa9ba059d9d59e576052871}{destination}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{serveranddrone_8h_source_l00052}{52}} of file \mbox{\hyperlink{serveranddrone_8h_source}{serveranddrone.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_drone_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_drone_aa751c1737fd884fa174062840b44b77a}\index{Drone@{Drone}!move@{move}}
+\index{move@{move}!Drone@{Drone}}
+\doxysubsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily \label{class_drone_aa751c1737fd884fa174062840b44b77a} 
+void Drone\+::move (\begin{DoxyParamCaption}\item[{qreal}]{dt}{}\end{DoxyParamCaption})}
+
+
+
+Moves the drone toward its destination. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & Time step in seconds.\\
+\hline
+\end{DoxyParams}
+The drone follows these rules\+:
+\begin{DoxyItemize}
+\item It moves inside its current server area
+\item When reaching a server, it follows the shortest path to the target server
+\item Area transitions are done only through edge centers (doors)
+\item Speed and orientation are updated smoothly 
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{serveranddrone_8cpp_source_l00018}{18}} of file \mbox{\hyperlink{serveranddrone_8cpp_source}{serveranddrone.\+cpp}}.
+
+\Hypertarget{class_drone_a5b9999237d302e66a007834d662f087f}\index{Drone@{Drone}!overflownArea@{overflownArea}}
+\index{overflownArea@{overflownArea}!Drone@{Drone}}
+\doxysubsubsection{\texorpdfstring{overflownArea()}{overflownArea()}}
+{\footnotesize\ttfamily \label{class_drone_a5b9999237d302e66a007834d662f087f} 
+\mbox{\hyperlink{class_server}{Server}} \texorpdfstring{$\ast$}{*} Drone\+::overflown\+Area (\begin{DoxyParamCaption}\item[{QList$<$ \mbox{\hyperlink{class_server}{Server}} $>$ \&}]{list}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{serveranddrone_8cpp_source_l00121}{121}} of file \mbox{\hyperlink{serveranddrone_8cpp_source}{serveranddrone.\+cpp}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_drone_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_drone_adb35c0604f9e7fd1b35fc6bd3fb740a7}\index{Drone@{Drone}!azimut@{azimut}}
+\index{azimut@{azimut}!Drone@{Drone}}
+\doxysubsubsection{\texorpdfstring{azimut}{azimut}}
+{\footnotesize\ttfamily \label{class_drone_adb35c0604f9e7fd1b35fc6bd3fb740a7} 
+qreal Drone\+::azimut =0}
+
+
+
+Definition at line \mbox{\hyperlink{serveranddrone_8h_source_l00057}{57}} of file \mbox{\hyperlink{serveranddrone_8h_source}{serveranddrone.\+h}}.
+
+\Hypertarget{class_drone_aa95e5b01daa9ba059d9d59e576052871}\index{Drone@{Drone}!destination@{destination}}
+\index{destination@{destination}!Drone@{Drone}}
+\doxysubsubsection{\texorpdfstring{destination}{destination}}
+{\footnotesize\ttfamily \label{class_drone_aa95e5b01daa9ba059d9d59e576052871} 
+\mbox{\hyperlink{class_vector2_d}{Vector2D}} Drone\+::destination}
+
+
+
+Definition at line \mbox{\hyperlink{serveranddrone_8h_source_l00058}{58}} of file \mbox{\hyperlink{serveranddrone_8h_source}{serveranddrone.\+h}}.
+
+\Hypertarget{class_drone_a72a835041f01fd55b8a315a6b811881b}\index{Drone@{Drone}!name@{name}}
+\index{name@{name}!Drone@{Drone}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily \label{class_drone_a72a835041f01fd55b8a315a6b811881b} 
+QString Drone\+::name}
+
+
+
+Definition at line \mbox{\hyperlink{serveranddrone_8h_source_l00054}{54}} of file \mbox{\hyperlink{serveranddrone_8h_source}{serveranddrone.\+h}}.
+
+\Hypertarget{class_drone_a1c4e77ec65b47ddaae2a0e2d29f5ea6a}\index{Drone@{Drone}!position@{position}}
+\index{position@{position}!Drone@{Drone}}
+\doxysubsubsection{\texorpdfstring{position}{position}}
+{\footnotesize\ttfamily \label{class_drone_a1c4e77ec65b47ddaae2a0e2d29f5ea6a} 
+\mbox{\hyperlink{class_vector2_d}{Vector2D}} Drone\+::position}
+
+
+
+Definition at line \mbox{\hyperlink{serveranddrone_8h_source_l00055}{55}} of file \mbox{\hyperlink{serveranddrone_8h_source}{serveranddrone.\+h}}.
+
+\Hypertarget{class_drone_a45ccef49593fe018527704107b3b25f7}\index{Drone@{Drone}!target@{target}}
+\index{target@{target}!Drone@{Drone}}
+\doxysubsubsection{\texorpdfstring{target}{target}}
+{\footnotesize\ttfamily \label{class_drone_a45ccef49593fe018527704107b3b25f7} 
+\mbox{\hyperlink{class_server}{Server}}\texorpdfstring{$\ast$}{*} Drone\+::target}
+
+
+
+Definition at line \mbox{\hyperlink{serveranddrone_8h_source_l00056}{56}} of file \mbox{\hyperlink{serveranddrone_8h_source}{serveranddrone.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{serveranddrone_8h}{serveranddrone.\+h}}\item 
+\mbox{\hyperlink{serveranddrone_8cpp}{serveranddrone.\+cpp}}\end{DoxyCompactItemize}

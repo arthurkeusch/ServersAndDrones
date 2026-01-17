@@ -1,0 +1,35 @@
+\doxysection{trianglemesh.\+h}
+\hypertarget{trianglemesh_8h_source}{}\label{trianglemesh_8h_source}\mbox{\hyperlink{trianglemesh_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{trianglemesh_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ TRIANGLEMESH\_H}}
+\DoxyCodeLine{\Hypertarget{trianglemesh_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ TRIANGLEMESH\_H}}
+\DoxyCodeLine{\Hypertarget{trianglemesh_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{trianglemesh_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{serveranddrone_8h}{serveranddrone.h}}>}}
+\DoxyCodeLine{\Hypertarget{trianglemesh_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{polygon_8h}{polygon.h}}>}}
+\DoxyCodeLine{\Hypertarget{trianglemesh_8h_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{trianglemesh_8h_source_l00007}\mbox{\hyperlink{class_triangle_mesh}{00007}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_triangle_mesh_ab2029ebab01cf3d30ce5202188804ea6}{TriangleMesh}}\ \{}
+\DoxyCodeLine{\Hypertarget{trianglemesh_8h_source_l00008}00008\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{trianglemesh_8h_source_l00009}00009\ \ \ \ \ \mbox{\hyperlink{class_triangle_mesh_ab2029ebab01cf3d30ce5202188804ea6}{TriangleMesh}}(QList<Server>\ \&servers);}
+\DoxyCodeLine{\Hypertarget{trianglemesh_8h_source_l00010}\mbox{\hyperlink{class_triangle_mesh_aee979c78bd41322d043d4191467762b3}{00010}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_triangle_mesh_aee979c78bd41322d043d4191467762b3}{setBox}}(\textcolor{keyword}{const}\ QPoint\ \&origin,\textcolor{keyword}{const}\ QSize\ \&size)\ \{\ winX0=origin.x();\ winY0=origin.y();\ winX1=origin.x()+size.width();\ winY1=origin.y()+size.height();\ \}}
+\DoxyCodeLine{\Hypertarget{trianglemesh_8h_source_l00011}\mbox{\hyperlink{class_triangle_mesh_ab1af7ccbbc399060306959ff2b0e4276}{00011}}\ \ \ \ \ QVector<Triangle>*\ \mbox{\hyperlink{class_triangle_mesh_ab1af7ccbbc399060306959ff2b0e4276}{getTriangles}}()\ \{\ \textcolor{keywordflow}{return}\ \&tabTriangles;\ \}}
+\DoxyCodeLine{\Hypertarget{trianglemesh_8h_source_l00012}\mbox{\hyperlink{class_triangle_mesh_a9fbf714936e735cd74c2c230bff55879}{00012}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_triangle_mesh_a9fbf714936e735cd74c2c230bff55879}{isInWindow}}(\textcolor{keywordtype}{int}\ x,\textcolor{keywordtype}{int}\ y)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ (x>winX0\ \&\&\ x<winX1\ \&\&\ y>winY0\ \&\&\ y<winY1);\ \}}
+\DoxyCodeLine{\Hypertarget{trianglemesh_8h_source_l00013}\mbox{\hyperlink{class_triangle_mesh_af018942a42d85ee0b2fbab1d0c8db3db}{00013}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_triangle_mesh_af018942a42d85ee0b2fbab1d0c8db3db}{isInWindow}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ pos)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ (pos.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}}>winX0\ \&\&\ pos.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}}<winX1\ \&\&\ pos.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}}>winY0\ \&\&\ pos.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}}<winY1);\ \}}
+\DoxyCodeLine{\Hypertarget{trianglemesh_8h_source_l00014}\mbox{\hyperlink{class_triangle_mesh_a7f72648c4af9b15c290a6431864559b3}{00014}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_triangle_mesh_a7f72648c4af9b15c290a6431864559b3}{getWindowXmin}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ winX0;\ \}}
+\DoxyCodeLine{\Hypertarget{trianglemesh_8h_source_l00015}\mbox{\hyperlink{class_triangle_mesh_a5614f926ee7c023fee8c34d545d2cf5a}{00015}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_triangle_mesh_a5614f926ee7c023fee8c34d545d2cf5a}{getWindowYmin}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ winY0;\ \}}
+\DoxyCodeLine{\Hypertarget{trianglemesh_8h_source_l00016}\mbox{\hyperlink{class_triangle_mesh_ab544925b1e47ad04bf46892ef940966f}{00016}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_triangle_mesh_ab544925b1e47ad04bf46892ef940966f}{getWindowXmax}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ winX1;\ \}}
+\DoxyCodeLine{\Hypertarget{trianglemesh_8h_source_l00017}\mbox{\hyperlink{class_triangle_mesh_ad28f739479abf58764ef6850e9fc9fa9}{00017}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_triangle_mesh_ad28f739479abf58764ef6850e9fc9fa9}{getWindowYmax}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ winY1;\ \}}
+\DoxyCodeLine{\Hypertarget{trianglemesh_8h_source_l00018}00018\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{trianglemesh_8h_source_l00019}00019\ \ \ \ \ \textcolor{keywordtype}{bool}\ checkDelaunay();}
+\DoxyCodeLine{\Hypertarget{trianglemesh_8h_source_l00020}00020\ \ \ \ \ QVector<Vector2D>\ findOppositPointOfTrianglesWithCommonEdge(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_triangle}{Triangle}}\ \&tri);}
+\DoxyCodeLine{\Hypertarget{trianglemesh_8h_source_l00021}00021\ \ \ \ \ QPair<Triangle*,Vector2D[4]>\ findOppositTriangle(\mbox{\hyperlink{class_triangle}{Triangle}}\ *tri,\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ oppVertex);}
+\DoxyCodeLine{\Hypertarget{trianglemesh_8h_source_l00022}00022\ \ \ \ \ \textcolor{keywordtype}{void}\ flipTriangle(\mbox{\hyperlink{class_triangle}{Triangle}}\ *);}
+\DoxyCodeLine{\Hypertarget{trianglemesh_8h_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{trianglemesh_8h_source_l00024}00024\ \ \ \ \ QVector<Vector2D>\ tabVertices;}
+\DoxyCodeLine{\Hypertarget{trianglemesh_8h_source_l00025}00025\ \ \ \ \ QVector<Triangle>\ tabTriangles;}
+\DoxyCodeLine{\Hypertarget{trianglemesh_8h_source_l00026}00026\ \ \ \ \ \mbox{\hyperlink{class_polygon}{Polygon}}*\ convexHull=\textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{trianglemesh_8h_source_l00027}00027\ \ \ \ \ \textcolor{keywordtype}{int}\ winX0,winX1,winY0,winY1;}
+\DoxyCodeLine{\Hypertarget{trianglemesh_8h_source_l00028}00028\ \};}
+\DoxyCodeLine{\Hypertarget{trianglemesh_8h_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{trianglemesh_8h_source_l00030}00030\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ TRIANGLEMESH\_H}}
+
+\end{DoxyCode}

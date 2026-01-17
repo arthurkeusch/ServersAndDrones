@@ -1,0 +1,407 @@
+\doxysection{Polygon Class Reference}
+\hypertarget{class_polygon}{}\label{class_polygon}\index{Polygon@{Polygon}}
+
+
+\doxylink{class_polygon}{Polygon} class allow to create, draw and manipulate polygons, especially check if a point is inside and compute the surface of the polygon.  
+
+
+
+
+{\ttfamily \#include $<$polygon.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_polygon_a9a2ff6255ba724c93681e914c6093478}{Polygon}} (QVector$<$ \mbox{\hyperlink{class_vector2_d}{Vector2D}} $>$ \&points)
+\begin{DoxyCompactList}\small\item\em Constructor of a polygon. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_polygon_ac183e712f8be1e13f1c9d5b4d4512ead}{Polygon}} ()
+\item 
+void \mbox{\hyperlink{class_polygon_a642869f1a334e30ec7c9ccddedf426ae}{remove}} (int i)
+\item 
+int \mbox{\hyperlink{class_polygon_a16751de5da73c143e0b80cee52c89ee5}{nb\+Vertices}} () const
+\begin{DoxyCompactList}\small\item\em nb\+Vertices \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_polygon_ab25909e3fe6c9d728eb3f47feab7fdf1}{add\+Vertex}} (float x, float y)
+\begin{DoxyCompactList}\small\item\em Add a new vertex at the end of the list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_polygon_aba6cf07e80149e49a7ca76ca79675d4a}{add\+Vertex}} (const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&v)
+\item 
+QPair$<$ \mbox{\hyperlink{class_vector2_d}{Vector2D}}, \mbox{\hyperlink{class_vector2_d}{Vector2D}} $>$ \mbox{\hyperlink{class_polygon_aae76b61c30007e637fa8deaacfaa0213}{get\+Edge}} (int i)
+\item 
+QPair$<$ \mbox{\hyperlink{class_vector2_d}{Vector2D}}, \mbox{\hyperlink{class_vector2_d}{Vector2D}} $>$ \mbox{\hyperlink{class_polygon_a095e27925f5899fcbb077b2436b99618}{get\+Bounding\+Box}} () const
+\begin{DoxyCompactList}\small\item\em return the boundig box coordinates of the polygon \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_vector2_d}{Vector2D}} \mbox{\hyperlink{class_polygon_ab35242ef62378fb3ca0e240f096e0e06}{operator\mbox{[}$\,$\mbox{]}}} (int i) const
+\begin{DoxyCompactList}\small\item\em A way to read the list of vertices of the polygon. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_polygon_a6cebd7d714871a2c908c7df919f49204}{draw}} (QPainter \&painter) const
+\begin{DoxyCompactList}\small\item\em Draws the polygon and its doors. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_polygon_a760ebc548ed15e307ae7471577de6eef}{triangulate}} ()
+\begin{DoxyCompactList}\small\item\em triangulate the polygon and store triangles in "{}triangles"{} array. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_polygon_aa57d77ccbdb5fc5ff9ad80de502d3b3a}{is\+On\+The\+Left}} (const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&p, int i) const
+\begin{DoxyCompactList}\small\item\em is\+On\+The\+Left \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_polygon_af360b9add7f9c5d630a6cefc9f370df6}{is\+On\+The\+Left}} (const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \texorpdfstring{$\ast$}{*}p, const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \texorpdfstring{$\ast$}{*}A, const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \texorpdfstring{$\ast$}{*}B)
+\begin{DoxyCompactList}\small\item\em is\+On\+The\+Left \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_polygon_a9b21d68da63b6727e2abd1d67ffb1e87}{is\+Convex}} () const
+\begin{DoxyCompactList}\small\item\em is\+Convex \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_polygon_a03036a30fedc6dcd90b0b40e4c2d57d3}{is\+AVertex}} (const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&v)
+\item 
+QVector$<$ \mbox{\hyperlink{class_triangle}{Triangle}} $>$ \mbox{\hyperlink{class_polygon_a8f47a4e576442240fb4decd7ee104f37}{get\+Triangles}} ()
+\item 
+double \mbox{\hyperlink{class_polygon_a4d0afaa20413f6cb532daa57c0a59f1b}{area}} () const
+\begin{DoxyCompactList}\small\item\em area \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_polygon_afe3476de4fea37e4aa450af418a032a5}{clip}} (int x0, int y0, int x1, int y1)
+\item 
+void \mbox{\hyperlink{class_polygon_a65739edd66950931690c8cf556d92ed4}{insert\+Point}} (const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&p, int index)
+\item 
+bool \mbox{\hyperlink{class_polygon_a56bef00713b585dcfb2c8a2bb893d4be}{contains}} (const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&pt)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_polygon}{Polygon} class allow to create, draw and manipulate polygons, especially check if a point is inside and compute the surface of the polygon. 
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00204}{204}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_polygon_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_polygon_a9a2ff6255ba724c93681e914c6093478}\index{Polygon@{Polygon}!Polygon@{Polygon}}
+\index{Polygon@{Polygon}!Polygon@{Polygon}}
+\doxysubsubsection{\texorpdfstring{Polygon()}{Polygon()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_polygon_a9a2ff6255ba724c93681e914c6093478} 
+Polygon\+::\+Polygon (\begin{DoxyParamCaption}\item[{QVector$<$ \mbox{\hyperlink{class_vector2_d}{Vector2D}} $>$ \&}]{points}{}\end{DoxyParamCaption})}
+
+
+
+Constructor of a polygon. 
+
+
+
+Definition at line \mbox{\hyperlink{polygon_8cpp_source_l00013}{13}} of file \mbox{\hyperlink{polygon_8cpp_source}{polygon.\+cpp}}.
+
+\Hypertarget{class_polygon_ac183e712f8be1e13f1c9d5b4d4512ead}\index{Polygon@{Polygon}!Polygon@{Polygon}}
+\index{Polygon@{Polygon}!Polygon@{Polygon}}
+\doxysubsubsection{\texorpdfstring{Polygon()}{Polygon()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_polygon_ac183e712f8be1e13f1c9d5b4d4512ead} 
+Polygon\+::\+Polygon (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00214}{214}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_polygon_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_polygon_aba6cf07e80149e49a7ca76ca79675d4a}\index{Polygon@{Polygon}!addVertex@{addVertex}}
+\index{addVertex@{addVertex}!Polygon@{Polygon}}
+\doxysubsubsection{\texorpdfstring{addVertex()}{addVertex()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_polygon_aba6cf07e80149e49a7ca76ca79675d4a} 
+void Polygon\+::add\+Vertex (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&}]{v}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00233}{233}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+\Hypertarget{class_polygon_ab25909e3fe6c9d728eb3f47feab7fdf1}\index{Polygon@{Polygon}!addVertex@{addVertex}}
+\index{addVertex@{addVertex}!Polygon@{Polygon}}
+\doxysubsubsection{\texorpdfstring{addVertex()}{addVertex()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_polygon_ab25909e3fe6c9d728eb3f47feab7fdf1} 
+void Polygon\+::add\+Vertex (\begin{DoxyParamCaption}\item[{float}]{x}{, }\item[{float}]{y}{}\end{DoxyParamCaption})}
+
+
+
+Add a new vertex at the end of the list. 
+
+\begin{DoxyWarning}{Warning}
+The number of vertices added to the polygon must be lower than Nmax. 
+\end{DoxyWarning}
+
+\begin{DoxyParams}{Parameters}
+{\em x} & abscissa of the new vertex \\
+\hline
+{\em y} & ordinate of the new vertex \\
+\hline
+\end{DoxyParams}
+\texorpdfstring{$<$}{<} the last vertex duplicates the first one
+
+Definition at line \mbox{\hyperlink{polygon_8cpp_source_l00072}{72}} of file \mbox{\hyperlink{polygon_8cpp_source}{polygon.\+cpp}}.
+
+\Hypertarget{class_polygon_a4d0afaa20413f6cb532daa57c0a59f1b}\index{Polygon@{Polygon}!area@{area}}
+\index{area@{area}!Polygon@{Polygon}}
+\doxysubsubsection{\texorpdfstring{area()}{area()}}
+{\footnotesize\ttfamily \label{class_polygon_a4d0afaa20413f6cb532daa57c0a59f1b} 
+double Polygon\+::area (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+area 
+
+\begin{DoxyReturn}{Returns}
+the surface of a polygon 
+\end{DoxyReturn}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000003}{Todo}}]write the code \end{DoxyRefDesc}
+
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00316}{316}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+\Hypertarget{class_polygon_afe3476de4fea37e4aa450af418a032a5}\index{Polygon@{Polygon}!clip@{clip}}
+\index{clip@{clip}!Polygon@{Polygon}}
+\doxysubsubsection{\texorpdfstring{clip()}{clip()}}
+{\footnotesize\ttfamily \label{class_polygon_afe3476de4fea37e4aa450af418a032a5} 
+void Polygon\+::clip (\begin{DoxyParamCaption}\item[{int}]{x0}{, }\item[{int}]{y0}{, }\item[{int}]{x1}{, }\item[{int}]{y1}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{polygon_8cpp_source_l00182}{182}} of file \mbox{\hyperlink{polygon_8cpp_source}{polygon.\+cpp}}.
+
+\Hypertarget{class_polygon_a56bef00713b585dcfb2c8a2bb893d4be}\index{Polygon@{Polygon}!contains@{contains}}
+\index{contains@{contains}!Polygon@{Polygon}}
+\doxysubsubsection{\texorpdfstring{contains()}{contains()}}
+{\footnotesize\ttfamily \label{class_polygon_a56bef00713b585dcfb2c8a2bb893d4be} 
+bool Polygon\+::contains (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&}]{pt}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00329}{329}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+\Hypertarget{class_polygon_a6cebd7d714871a2c908c7df919f49204}\index{Polygon@{Polygon}!draw@{draw}}
+\index{draw@{draw}!Polygon@{Polygon}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily \label{class_polygon_a6cebd7d714871a2c908c7df919f49204} 
+void Polygon\+::draw (\begin{DoxyParamCaption}\item[{QPainter \&}]{painter}{}\end{DoxyParamCaption}) const}
+
+
+
+Draws the polygon and its doors. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em painter} & Painter used to render the polygon.\\
+\hline
+\end{DoxyParams}
+The polygon is drawn using its vertices stored in tab\+Pts. A door is drawn at the middle of each edge, aligned with the edge, with a fixed width defined by door\+Width. \texorpdfstring{$<$}{<} use the draw\+Polygon method of QPainter
+
+Definition at line \mbox{\hyperlink{polygon_8cpp_source_l00086}{86}} of file \mbox{\hyperlink{polygon_8cpp_source}{polygon.\+cpp}}.
+
+\Hypertarget{class_polygon_a095e27925f5899fcbb077b2436b99618}\index{Polygon@{Polygon}!getBoundingBox@{getBoundingBox}}
+\index{getBoundingBox@{getBoundingBox}!Polygon@{Polygon}}
+\doxysubsubsection{\texorpdfstring{getBoundingBox()}{getBoundingBox()}}
+{\footnotesize\ttfamily \label{class_polygon_a095e27925f5899fcbb077b2436b99618} 
+QPair$<$ \mbox{\hyperlink{class_vector2_d}{Vector2D}}, \mbox{\hyperlink{class_vector2_d}{Vector2D}} $>$ Polygon\+::get\+Bounding\+Box (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+return the boundig box coordinates of the polygon 
+
+\begin{DoxyReturn}{Returns}
+The first vector is the left bottom corner and the second vector is the right top corner of the box. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{polygon_8cpp_source_l00136}{136}} of file \mbox{\hyperlink{polygon_8cpp_source}{polygon.\+cpp}}.
+
+\Hypertarget{class_polygon_aae76b61c30007e637fa8deaacfaa0213}\index{Polygon@{Polygon}!getEdge@{getEdge}}
+\index{getEdge@{getEdge}!Polygon@{Polygon}}
+\doxysubsubsection{\texorpdfstring{getEdge()}{getEdge()}}
+{\footnotesize\ttfamily \label{class_polygon_aae76b61c30007e637fa8deaacfaa0213} 
+QPair$<$ \mbox{\hyperlink{class_vector2_d}{Vector2D}}, \mbox{\hyperlink{class_vector2_d}{Vector2D}} $>$ Polygon\+::get\+Edge (\begin{DoxyParamCaption}\item[{int}]{i}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00236}{236}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+\Hypertarget{class_polygon_a8f47a4e576442240fb4decd7ee104f37}\index{Polygon@{Polygon}!getTriangles@{getTriangles}}
+\index{getTriangles@{getTriangles}!Polygon@{Polygon}}
+\doxysubsubsection{\texorpdfstring{getTriangles()}{getTriangles()}}
+{\footnotesize\ttfamily \label{class_polygon_a8f47a4e576442240fb4decd7ee104f37} 
+QVector$<$ \mbox{\hyperlink{class_triangle}{Triangle}} $>$ Polygon\+::get\+Triangles (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00309}{309}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+\Hypertarget{class_polygon_a65739edd66950931690c8cf556d92ed4}\index{Polygon@{Polygon}!insertPoint@{insertPoint}}
+\index{insertPoint@{insertPoint}!Polygon@{Polygon}}
+\doxysubsubsection{\texorpdfstring{insertPoint()}{insertPoint()}}
+{\footnotesize\ttfamily \label{class_polygon_a65739edd66950931690c8cf556d92ed4} 
+void Polygon\+::insert\+Point (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&}]{p}{, }\item[{int}]{index}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00325}{325}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+\Hypertarget{class_polygon_a03036a30fedc6dcd90b0b40e4c2d57d3}\index{Polygon@{Polygon}!isAVertex@{isAVertex}}
+\index{isAVertex@{isAVertex}!Polygon@{Polygon}}
+\doxysubsubsection{\texorpdfstring{isAVertex()}{isAVertex()}}
+{\footnotesize\ttfamily \label{class_polygon_a03036a30fedc6dcd90b0b40e4c2d57d3} 
+bool Polygon\+::is\+AVertex (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&}]{v}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00302}{302}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+\Hypertarget{class_polygon_a9b21d68da63b6727e2abd1d67ffb1e87}\index{Polygon@{Polygon}!isConvex@{isConvex}}
+\index{isConvex@{isConvex}!Polygon@{Polygon}}
+\doxysubsubsection{\texorpdfstring{isConvex()}{isConvex()}}
+{\footnotesize\ttfamily \label{class_polygon_a9b21d68da63b6727e2abd1d67ffb1e87} 
+bool Polygon\+::is\+Convex (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+is\+Convex 
+
+\begin{DoxyReturn}{Returns}
+true if the polygon is convex 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00293}{293}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+\Hypertarget{class_polygon_aa57d77ccbdb5fc5ff9ad80de502d3b3a}\index{Polygon@{Polygon}!isOnTheLeft@{isOnTheLeft}}
+\index{isOnTheLeft@{isOnTheLeft}!Polygon@{Polygon}}
+\doxysubsubsection{\texorpdfstring{isOnTheLeft()}{isOnTheLeft()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_polygon_aa57d77ccbdb5fc5ff9ad80de502d3b3a} 
+bool Polygon\+::is\+On\+The\+Left (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \&}]{p}{, }\item[{int}]{i}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+is\+On\+The\+Left 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & tested point \\
+\hline
+{\em i} & the number of the edge (P\+\_\+i\+P\+\_\+\{i+1\}) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if p is on the left of the edge P\+\_\+i\+P\+\_\+\{i+1\} 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00272}{272}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+\Hypertarget{class_polygon_af360b9add7f9c5d630a6cefc9f370df6}\index{Polygon@{Polygon}!isOnTheLeft@{isOnTheLeft}}
+\index{isOnTheLeft@{isOnTheLeft}!Polygon@{Polygon}}
+\doxysubsubsection{\texorpdfstring{isOnTheLeft()}{isOnTheLeft()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_polygon_af360b9add7f9c5d630a6cefc9f370df6} 
+bool Polygon\+::is\+On\+The\+Left (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \texorpdfstring{$\ast$}{*}}]{p}{, }\item[{const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \texorpdfstring{$\ast$}{*}}]{A}{, }\item[{const \mbox{\hyperlink{class_vector2_d}{Vector2D}} \texorpdfstring{$\ast$}{*}}]{B}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+is\+On\+The\+Left 
+
+
+\begin{DoxyParams}{Parameters}
+{\em P} & tested point \\
+\hline
+{\em A} & \\
+\hline
+{\em B} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if Ap is on the left of \mbox{[}AB\mbox{]} 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00285}{285}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+\Hypertarget{class_polygon_a16751de5da73c143e0b80cee52c89ee5}\index{Polygon@{Polygon}!nbVertices@{nbVertices}}
+\index{nbVertices@{nbVertices}!Polygon@{Polygon}}
+\doxysubsubsection{\texorpdfstring{nbVertices()}{nbVertices()}}
+{\footnotesize\ttfamily \label{class_polygon_a16751de5da73c143e0b80cee52c89ee5} 
+int Polygon\+::nb\+Vertices (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+nb\+Vertices 
+
+\begin{DoxyReturn}{Returns}
+the number of vertices of the polygon 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00225}{225}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+\Hypertarget{class_polygon_ab35242ef62378fb3ca0e240f096e0e06}\index{Polygon@{Polygon}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!Polygon@{Polygon}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}}
+{\footnotesize\ttfamily \label{class_polygon_ab35242ef62378fb3ca0e240f096e0e06} 
+\mbox{\hyperlink{class_vector2_d}{Vector2D}} Polygon\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{int}]{i}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+A way to read the list of vertices of the polygon. 
+
+\begin{DoxyWarning}{Warning}
+The returned array is read-\/only! 
+\end{DoxyWarning}
+
+\begin{DoxyParams}{Parameters}
+{\em n} & number of vertices in the array. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a read-\/only version of the array of vertices. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00251}{251}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+\Hypertarget{class_polygon_a642869f1a334e30ec7c9ccddedf426ae}\index{Polygon@{Polygon}!remove@{remove}}
+\index{remove@{remove}!Polygon@{Polygon}}
+\doxysubsubsection{\texorpdfstring{remove()}{remove()}}
+{\footnotesize\ttfamily \label{class_polygon_a642869f1a334e30ec7c9ccddedf426ae} 
+void Polygon\+::remove (\begin{DoxyParamCaption}\item[{int}]{i}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{polygon_8h_source_l00215}{215}} of file \mbox{\hyperlink{polygon_8h_source}{polygon.\+h}}.
+
+\Hypertarget{class_polygon_a760ebc548ed15e307ae7471577de6eef}\index{Polygon@{Polygon}!triangulate@{triangulate}}
+\index{triangulate@{triangulate}!Polygon@{Polygon}}
+\doxysubsubsection{\texorpdfstring{triangulate()}{triangulate()}}
+{\footnotesize\ttfamily \label{class_polygon_a760ebc548ed15e307ae7471577de6eef} 
+void Polygon\+::triangulate (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+triangulate the polygon and store triangles in "{}triangles"{} array. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000001}{Todo}}]write the code
+\begin{DoxyEnumerate}
+\item Copy the poly polygon in a temporary version (tmp) 
+\end{DoxyEnumerate}\end{DoxyRefDesc}
+
+
+
+\begin{DoxyEnumerate}
+\item search a first consecutive group of three vertices that check\+:
+\end{DoxyEnumerate}
+\begin{DoxyItemize}
+\item CCW oriented
+\item does not contain any other vertex
+\end{DoxyItemize}
+
+
+\begin{DoxyEnumerate}
+\item add the triangle in the list
+\end{DoxyEnumerate}
+
+
+\begin{DoxyEnumerate}
+\item remove middle vertex from the tmp polygon
+\end{DoxyEnumerate}
+
+Definition at line \mbox{\hyperlink{polygon_8cpp_source_l00147}{147}} of file \mbox{\hyperlink{polygon_8cpp_source}{polygon.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{polygon_8h}{polygon.\+h}}\item 
+\mbox{\hyperlink{polygon_8cpp}{polygon.\+cpp}}\end{DoxyCompactItemize}

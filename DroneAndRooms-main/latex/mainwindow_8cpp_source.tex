@@ -1,0 +1,433 @@
+\doxysection{mainwindow.\+cpp}
+\hypertarget{mainwindow_8cpp_source}{}\label{mainwindow_8cpp_source}\mbox{\hyperlink{mainwindow_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{mainwindow_8h}{mainwindow.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}ui\_mainwindow.h"{}}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{canvas_8h}{canvas.h}}>}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <QJsonDocument>}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <QJsonArray>}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <QJsonObject>}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <QFile>}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <QFileDialog>}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <QMessageBox>}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{trianglemesh_8h}{trianglemesh.h}}>}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <QDebug>}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <queue>}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <limits>}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00016}\mbox{\hyperlink{class_main_window_a996c5a2b6f77944776856f08ec30858d}{00016}}\ \mbox{\hyperlink{class_main_window_a996c5a2b6f77944776856f08ec30858d}{MainWindow::MainWindow}}(QWidget\ *parent)}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00017}00017\ \ \ \ \ :\ QMainWindow(parent)}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00018}00018\ \ \ \ \ ,\ ui(new\ \mbox{\hyperlink{namespace_ui}{Ui}}::\mbox{\hyperlink{class_main_window_a996c5a2b6f77944776856f08ec30858d}{MainWindow}})}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00019}00019\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00020}00020\ \ \ \ \ ui-\/>setupUi(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00021}00021\ \ \ \ \ \textcolor{comment}{//\ load\ initial\ simple\ case}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00022}00022\ \ \ \ \ loadJson(\textcolor{stringliteral}{"{}../../../json/simple.json"{}});}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00023}00023\ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00025}\mbox{\hyperlink{class_main_window_ae98d00a93bc118200eeef9f9bba1dba7}{00025}}\ \mbox{\hyperlink{class_main_window_ae98d00a93bc118200eeef9f9bba1dba7}{MainWindow::\string~MainWindow}}()}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00026}00026\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{keyword}{delete}\ ui;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00028}00028\ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00030}00030\ \textcolor{keywordtype}{bool}\ MainWindow::loadJson(\textcolor{keyword}{const}\ QString\&\ title)\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00031}00031\ \ \ \ \ QFile\ file(title);}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00032}00032\ \ \ \ \ \textcolor{keywordflow}{if}\ (!file.open(QIODevice::ReadOnly))\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ qWarning()\ <<\ \textcolor{stringliteral}{"{}Impossible\ d'ouvrir\ le\ fichier:"{}}\ <<\ title;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00035}00035\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00037}00037\ \ \ \ \ QByteArray\ data\ =\ file.readAll();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00038}00038\ \ \ \ \ file.close();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00040}00040\ \ \ \ \ QJsonParseError\ error;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00041}00041\ \ \ \ \ QJsonDocument\ doc\ =\ QJsonDocument::fromJson(data,\ \&error);}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00042}00042\ \ \ \ \ \textcolor{keywordflow}{if}\ (error.error\ !=\ QJsonParseError::NoError)\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ qWarning()\ <<\ \textcolor{stringliteral}{"{}Erreur\ JSON:"{}}\ <<\ error.errorString();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00045}00045\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00046}00046\ \ \ \ \ \textcolor{keywordflow}{if}\ (!doc.isObject())\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ qWarning()\ <<\ \textcolor{stringliteral}{"{}Le\ document\ JSON\ n'est\ pas\ un\ objet."{}};}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00049}00049\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00051}00051\ \ \ \ \ QJsonObject\ root\ =\ doc.object();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00053}00053\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ Window\ -\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00054}00054\ \ \ \ \ \textcolor{keywordflow}{if}\ (root.contains(\textcolor{stringliteral}{"{}window"{}})\ \&\&\ root[\textcolor{stringliteral}{"{}window"{}}].isObject())\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ QJsonObject\ win\ =\ root[\textcolor{stringliteral}{"{}window"{}}].toObject();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ origin\ =\ win.value(\textcolor{stringliteral}{"{}origine"{}}).toString().split(\textcolor{stringliteral}{"{},"{}});}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ size\ \ \ =\ win.value(\textcolor{stringliteral}{"{}size"{}}).toString().split(\textcolor{stringliteral}{"{},"{}});}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ QPoint\ wOrigin=\{origin[0].toInt(),origin[1].toInt()\};}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ QSize\ wSize=\{size[0].toInt(),size[1].toInt()\};}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ qDebug()\ <<\ \textcolor{stringliteral}{"{}Window.origine\ ="{}}\ <<\ wOrigin;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ qDebug()\ <<\ \textcolor{stringliteral}{"{}Window.size\ \ \ \ ="{}}\ <<\ wSize;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ ui-\/>canvas-\/>setWindow(wOrigin,wSize);}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00064}00064\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00066}00066\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ Servers\ -\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00067}00067\ \ \ \ \ \textcolor{keywordflow}{if}\ (root.contains(\textcolor{stringliteral}{"{}servers"{}})\ \&\&\ root[\textcolor{stringliteral}{"{}servers"{}}].isArray())\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num=0;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ QJsonArray\ arr\ =\ root[\textcolor{stringliteral}{"{}servers"{}}].toArray();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ QJsonValue\ \&v\ :\ arr)\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!v.isObject())\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ QJsonObject\ obj\ =\ v.toObject();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ Server\ s;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ s.\mbox{\hyperlink{class_server_a5f81566ed110e47da23ed78bc53a5599}{name}}\ =\ obj.value(\textcolor{stringliteral}{"{}name"{}}).toString();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ QString\ pos\ =\ obj.value(\textcolor{stringliteral}{"{}position"{}}).toString();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ parts\ =\ pos.split(\textcolor{charliteral}{','});}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (parts.size()\ ==\ 2)}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ s.\mbox{\hyperlink{class_server_a17cfe740f9ce3cc3699c4f18f48a1f81}{position}}\ =\ QPoint(parts[0].toInt(),\ parts[1].toInt());}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ s.\mbox{\hyperlink{class_server_aa54fe166d843501ab0a3197cdc2f30cb}{color}}\ =\ QColor(obj.value(\textcolor{stringliteral}{"{}color"{}}).toString());}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ s.\mbox{\hyperlink{class_server_ad430796220d97a4133c1ad93f64019b9}{id}}=num++;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ ui-\/>canvas-\/>servers.append(s);}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ qDebug()\ <<\ \textcolor{stringliteral}{"{}Server:"{}}\ <<\ s.\mbox{\hyperlink{class_server_ad430796220d97a4133c1ad93f64019b9}{id}}\ <<\ \textcolor{stringliteral}{"{},"{}}\ <<\ s.\mbox{\hyperlink{class_server_a5f81566ed110e47da23ed78bc53a5599}{name}}\ <<\ s.\mbox{\hyperlink{class_server_a17cfe740f9ce3cc3699c4f18f48a1f81}{position}}\ <<\ s.\mbox{\hyperlink{class_server_aa54fe166d843501ab0a3197cdc2f30cb}{color}};}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00084}00084\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00086}00086\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ Drones\ -\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00087}00087\ \ \ \ \ \textcolor{keywordflow}{if}\ (root.contains(\textcolor{stringliteral}{"{}drones"{}})\ \&\&\ root[\textcolor{stringliteral}{"{}drones"{}}].isArray())\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ QJsonArray\ arr\ =\ root[\textcolor{stringliteral}{"{}drones"{}}].toArray();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ QJsonValue\ \&v\ :\ arr)\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!v.isObject())\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ QJsonObject\ obj\ =\ v.toObject();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ Drone\ d;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ d.\mbox{\hyperlink{class_drone_a72a835041f01fd55b8a315a6b811881b}{name}}\ =\ obj.value(\textcolor{stringliteral}{"{}name"{}}).toString();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ QString\ pos\ =\ obj.value(\textcolor{stringliteral}{"{}position"{}}).toString();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ parts\ =\ pos.split(\textcolor{charliteral}{','});}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (parts.size()\ ==\ 2)}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ d.\mbox{\hyperlink{class_drone_a1c4e77ec65b47ddaae2a0e2d29f5ea6a}{position}}\ =\ Vector2D(parts[0].toInt(),\ parts[1].toInt());}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ QString\ name\ =\ obj.value(\textcolor{stringliteral}{"{}target"{}}).toString();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ search\ name\ in\ server\ list}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ d.\mbox{\hyperlink{class_drone_a45ccef49593fe018527704107b3b25f7}{target}}=\textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it=ui-\/>canvas-\/>servers.begin();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (it!=ui-\/>canvas-\/>servers.end()\ \&\&\ it-\/>name!=name)\ it++;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (it!=ui-\/>canvas-\/>servers.end())\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ d.\mbox{\hyperlink{class_drone_a45ccef49593fe018527704107b3b25f7}{target}}=\&(*it);}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ qDebug()\ <<\ \textcolor{stringliteral}{"{}Drone:"{}}\ <<\ d.\mbox{\hyperlink{class_drone_a72a835041f01fd55b8a315a6b811881b}{name}}\ <<\ \textcolor{stringliteral}{"{}("{}}\ <<\ d.\mbox{\hyperlink{class_drone_a1c4e77ec65b47ddaae2a0e2d29f5ea6a}{position}}.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}}\ <<\ \textcolor{stringliteral}{"{},"{}}\ <<\ d.\mbox{\hyperlink{class_drone_a1c4e77ec65b47ddaae2a0e2d29f5ea6a}{position}}.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}}\ <<\ \textcolor{stringliteral}{"{})\ →"{}}\ <<\ d.\mbox{\hyperlink{class_drone_a45ccef49593fe018527704107b3b25f7}{target}}-\/>\mbox{\hyperlink{class_server_a5f81566ed110e47da23ed78bc53a5599}{name}};}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ qDebug()\ <<\ \textcolor{stringliteral}{"{}error\ in\ JsonFile:\ bad\ destination\ name:\ "{}}\ <<\ name;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ ui-\/>canvas-\/>drones.append(d);}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00112}00112\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00114}00114\ \ \ \ \ createVoronoiMap();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00115}00115\ \ \ \ \ createServersLinks();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00116}00116\ \ \ \ \ fillDistanceArray();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00117}00117\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00118}00118\ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00120}00120\ \textcolor{keywordtype}{void}\ MainWindow::createVoronoiMap()\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00121}00121\ \ \ \ \ TriangleMesh\ mesh(ui-\/>canvas-\/>servers);}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00122}00122\ \ \ \ \ mesh.setBox(ui-\/>canvas-\/>getOrigin(),ui-\/>canvas-\/>getSize());}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00124}00124\ \ \ \ \ \textcolor{keyword}{auto}\ triangles\ =\ mesh.getTriangles();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00125}00125\ \ \ \ \ \textcolor{keyword}{auto}\ m\_servor\ =\ ui-\/>canvas-\/>servers.begin();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00126}00126\ \ \ \ \ QVector<const\ Triangle*>\ tabTri;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00127}00127\ \ \ \ \ \textcolor{keywordflow}{while}\ (m\_servor!=ui-\/>canvas-\/>servers.end())\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ for\ all\ vertices\ of\ the\ mesh}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Vector2D\ vert((*m\_servor).position.x(),(*m\_servor).position.y());}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ mt\_it\ =\ triangles-\/>begin();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ tabTri.clear();\ \textcolor{comment}{//\ tabTri:\ list\ of\ triangles\ containing\ m\_vert}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (mt\_it!=triangles-\/>end())\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((*mt\_it).hasVertex(vert))\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tabTri.push\_back(\&(*mt\_it));}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ mt\_it++;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ find\ left\ border}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ first\ =\ tabTri.begin();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ tt\_it\ =\ tabTri.begin();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ found=\textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (tt\_it!=tabTri.end()\ \&\&\ !found)\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ comp\_it\ =\ tabTri.begin();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (comp\_it!=tabTri.end()\ \&\&\ (*tt\_it)-\/>getNextVertex(vert)!=(*comp\_it)-\/>getPrevVertex(vert))\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ comp\_it++;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (comp\_it==tabTri.end())\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ first=tt\_it;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ found=\textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ tt\_it++;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ create\ polygon}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ \textcolor{comment}{//poly-\/>setColor((*m\_servor)-\/>color);}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ tt\_it=first;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (found\ \&\&\ mesh.isInWindow((*tt\_it)-\/>getCenter().x,(*tt\_it)-\/>getCenter().y))\ \{\ \textcolor{comment}{//\ add\ a\ point\ for\ the\ left\ border}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ Vector2D\ V\ =\ (*first)-\/>nextEdgeNormal(vert);}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ k;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (V.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}}\ >\ 0)\ \{\ \textcolor{comment}{//\ (circumCenter+k\ V).x=width}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ k\ =\ (mesh.getWindowXmax()\ -\/\ (*first)-\/>getCenter().x)\ /\ float(V.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}});}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ k\ =\ (mesh.getWindowXmin()-\/(*first)-\/>getCenter().x)\ /\ float(V.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}});}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (V.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}}\ >\ 0)\ \{\ \textcolor{comment}{//\ (circumCenter+k\ V).y=height}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ k\ =\ fmin(k,\ (mesh.getWindowYmax()\ -\/\ (*first)-\/>getCenter().y)\ /\ \textcolor{keywordtype}{float}(V.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}}));}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ k\ =\ fmin(k,\ (mesh.getWindowYmin()-\/(*first)-\/>getCenter().y)\ /\ \textcolor{keywordtype}{float}(V.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}}));}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ m\_servor-\/>area.addVertex(Vector2D((*first)-\/>getCenter()\ +\ k\ *\ V));}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ Vector2D\ pt\ =\ (*first)-\/>getCenter()\ +\ k\ *\ V;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00172}00172\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00173}00173\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ comp\_it\ =\ first;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00174}00174\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ m\_servor-\/>area.addVertex((*tt\_it)-\/>getCenter());}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ search\ triangle\ on\ right\ of\ tt\_it}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ comp\_it\ =\ tabTri.begin();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (comp\_it!=tabTri.end()\ \&\&\ (*tt\_it)-\/>getPrevVertex(vert)!=(*comp\_it)-\/>getNextVertex(vert))\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ comp\_it++;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (comp\_it!=tabTri.end())\ tt\_it\ =\ comp\_it;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00182}00182\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (tt\_it!=first\ \&\&\ comp\_it!=tabTri.end());}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00183}00183\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (found\ \&\&\ mesh.isInWindow((*tt\_it)-\/>getCenter()))\ \{\ \textcolor{comment}{//\ add\ a\ point\ for\ the\ right\ border}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ Vector2D\ V\ =\ (*tt\_it)-\/>previousEdgeNormal(vert);}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ k;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (V.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}}\ >\ 0)\ \{\ \textcolor{comment}{//\ (circumCenter+k\ V).x=width}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ k\ =\ (mesh.getWindowXmax()\ -\/\ (*tt\_it)-\/>getCenter().x)\ /\ float(V.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}});}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ k\ =\ (mesh.getWindowXmin()-\/(*tt\_it)-\/>getCenter().x)\ /\ float(V.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}});}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (V.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}}\ >\ 0)\ \{\ \textcolor{comment}{//\ (circumCenter+k\ V).y=height}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ k\ =\ fmin(k,\ (mesh.getWindowYmax()\ -\/\ (*tt\_it)-\/>getCenter().y)\ /\ \textcolor{keywordtype}{float}(V.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}}));}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ k\ =\ fmin(k,\ (mesh.getWindowYmin()-\/(*tt\_it)-\/>getCenter().y)\ /\ \textcolor{keywordtype}{float}(V.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}}));}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ m\_servor-\/>area.addVertex(Vector2D((*tt\_it)-\/>getCenter()\ +\ k\ *\ V));}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ Vector2D\ pt\ =\ (*tt\_it)-\/>getCenter()\ +\ k\ *\ V;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00198}00198\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00199}00199\ \ \ \ \ \ \ \ \ qDebug()\ <<\ m\_servor-\/>name;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00200}00200\ \ \ \ \ \ \ \ \ m\_servor-\/>area.clip(mesh.getWindowXmin(),mesh.getWindowYmin(),mesh.getWindowXmax(),mesh.getWindowYmax());}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00201}00201\ \ \ \ \ \ \ \ \ m\_servor-\/>area.triangulate();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00202}00202\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00203}00203\ \ \ \ \ \ \ \ \ m\_servor++;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00204}00204\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00205}00205\ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00206}00206\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00207}00207\ \textcolor{keywordtype}{void}\ MainWindow::createServersLinks()\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00208}00208\ \ \ \ \ \textcolor{comment}{//\ Number\ of\ servers}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00209}00209\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ n\ =\ ui-\/>canvas-\/>servers.size();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00210}00210\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00211}00211\ \ \ \ \ \textcolor{comment}{//\ Clear\ existing\ links}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00212}00212\ \ \ \ \ ui-\/>canvas-\/>links.clear();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00213}00213\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \&s\ :\ ui-\/>canvas-\/>servers)\ s.\mbox{\hyperlink{class_server_a093220050a7836cabb9560eafe7e3a4c}{links}}.clear();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00214}00214\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00215}00215\ \ \ \ \ \textcolor{comment}{//\ Iterate\ over\ all\ server\ pairs\ (i\ <\ j)}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00216}00216\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ n;\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00217}00217\ \ \ \ \ \ \ \ \ Server\ \&si\ =\ ui-\/>canvas-\/>servers[i];}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00218}00218\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ ni\ =\ si.\mbox{\hyperlink{class_server_a1dce4ef5340e95c36e2c95b11f6eb76d}{area}}.\mbox{\hyperlink{class_polygon_a16751de5da73c143e0b80cee52c89ee5}{nbVertices}}();\ \textcolor{comment}{//\ Number\ of\ edges\ of\ server\ i\ area}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00219}00219\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00220}00220\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ i\ +\ 1;\ j\ <\ n;\ ++j)\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ Server\ \&sj\ =\ ui-\/>canvas-\/>servers[j];}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ nj\ =\ sj.\mbox{\hyperlink{class_server_a1dce4ef5340e95c36e2c95b11f6eb76d}{area}}.\mbox{\hyperlink{class_polygon_a16751de5da73c143e0b80cee52c89ee5}{nbVertices}}();\ \textcolor{comment}{//\ Number\ of\ edges\ of\ server\ j\ area}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00223}00223\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ found\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ QPair<Vector2D,\ Vector2D>\ commonEdge;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00226}00226\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Search\ for\ a\ common\ edge\ between\ the\ two\ polygons}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00228}00228\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ ei\ =\ 0;\ ei\ <\ ni\ \&\&\ !found;\ ++ei)\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00229}00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ e1\ =\ si.\mbox{\hyperlink{class_server_a1dce4ef5340e95c36e2c95b11f6eb76d}{area}}.\mbox{\hyperlink{class_polygon_aae76b61c30007e637fa8deaacfaa0213}{getEdge}}(ei);}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00230}00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ ej\ =\ 0;\ ej\ <\ nj;\ ++ej)\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00231}00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ e2\ =\ sj.\mbox{\hyperlink{class_server_a1dce4ef5340e95c36e2c95b11f6eb76d}{area}}.\mbox{\hyperlink{class_polygon_aae76b61c30007e637fa8deaacfaa0213}{getEdge}}(ej);}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00232}00232\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00233}00233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ edges\ match\ (both\ orientations)}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00234}00234\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00235}00235\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (e1.first\ ==\ e2.first\ \&\&\ e1.second\ ==\ e2.second)\ ||}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00236}00236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (e1.first\ ==\ e2.second\ \&\&\ e1.second\ ==\ e2.first)}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00237}00237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00238}00238\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ commonEdge\ =\ e1;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00239}00239\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ found\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00240}00240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00241}00241\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00242}00242\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00243}00243\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00244}00244\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00245}00245\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ a\ link\ if\ a\ shared\ edge\ has\ been\ found}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00246}00246\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (found)\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00247}00247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Link\ *l\ =\ \textcolor{keyword}{new}\ Link(\&si,\ \&sj,\ commonEdge);}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00248}00248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ui-\/>canvas-\/>links.push\_back(l);}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00249}00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ si.\mbox{\hyperlink{class_server_a093220050a7836cabb9560eafe7e3a4c}{links}}.push\_back(l);}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00250}00250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sj.\mbox{\hyperlink{class_server_a093220050a7836cabb9560eafe7e3a4c}{links}}.push\_back(l);}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00251}00251\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00252}00252\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00253}00253\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00254}00254\ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00255}00255\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00256}00256\ \textcolor{keywordtype}{void}\ MainWindow::fillDistanceArray()\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00257}00257\ \ \ \ \ \textcolor{comment}{//\ define\ a\ nServers\ x\ nServers\ array}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00258}00258\ \ \ \ \ \textcolor{keywordtype}{int}\ nServers\ =\ ui-\/>canvas-\/>servers.size();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00259}00259\ \ \ \ \ distanceArray.resize(nServers);}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00260}00260\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<nServers;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00261}00261\ \ \ \ \ \ \ \ \ distanceArray[i].resize(nServers);}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00262}00262\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00263}00263\ \ \ \ \ \textcolor{comment}{//\ init\ Servers\ distanceArray}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00264}00264\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \&s:ui-\/>canvas-\/>servers)\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00265}00265\ \ \ \ \ \ \ \ \ s.\mbox{\hyperlink{class_server_a69cf94dcbca6362483a7d1065be0a53c}{bestDistance}}.resize(nServers);}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00266}00266\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<nServers;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00267}00267\ \ \ \ \ \ \ \ \ \ \ \ \ s.\mbox{\hyperlink{class_server_a69cf94dcbca6362483a7d1065be0a53c}{bestDistance}}[i]=\{\textcolor{keyword}{nullptr},0\};}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00268}00268\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00269}00269\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00270}00270\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00271}00271\ \ \ \ \ \textcolor{comment}{//\ Helper:\ returns\ the\ opposite\ server\ of\ a\ link}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00272}00272\ \ \ \ \ \textcolor{keyword}{auto}\ otherServer\ =\ [](Link*\ l,\ Server*\ from)\ -\/>\ Server*\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00273}00273\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!l\ ||\ !from)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00274}00274\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (l-\/>\mbox{\hyperlink{class_link_ad8d98f25c42980a9db35299ee9e440fc}{getNode1}}()\ ==\ from)\ \textcolor{keywordflow}{return}\ l-\/>\mbox{\hyperlink{class_link_a54716a0cb68ac71c1cb46e113e2789ee}{getNode2}}();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00275}00275\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (l-\/>\mbox{\hyperlink{class_link_a54716a0cb68ac71c1cb46e113e2789ee}{getNode2}}()\ ==\ from)\ \textcolor{keywordflow}{return}\ l-\/>\mbox{\hyperlink{class_link_ad8d98f25c42980a9db35299ee9e440fc}{getNode1}}();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00276}00276\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00277}00277\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00278}00278\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00279}00279\ \ \ \ \ \textcolor{keyword}{const}\ qreal\ INF\ =\ std::numeric\_limits<qreal>::infinity();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00280}00280\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00281}00281\ \ \ \ \ \textcolor{comment}{//\ Run\ Dijkstra\ from\ each\ server}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00282}00282\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \&src\ :\ ui-\/>canvas-\/>servers)\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00283}00283\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ srcId\ =\ src.id;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00284}00284\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00285}00285\ \ \ \ \ \ \ \ \ QVector<qreal>\ dist(nServers,\ INF);\ \textcolor{comment}{//\ Distance\ from\ src}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00286}00286\ \ \ \ \ \ \ \ \ QVector<int>\ prev(nServers,\ -\/1);\ \textcolor{comment}{//\ Previous\ node}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00287}00287\ \ \ \ \ \ \ \ \ QVector<Link*>\ prevLink(nServers,\ \textcolor{keyword}{nullptr});\ \textcolor{comment}{//\ Link\ used\ to\ reach\ node}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00288}00288\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00289}00289\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Priority\ queue\ item}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00290}00290\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }Item\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00291}00291\ \ \ \ \ \ \ \ \ \ \ \ \ qreal\ d;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00292}00292\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ v;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00293}00293\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ operator>(\textcolor{keyword}{const}\ Item\&\ o)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ d\ >\ o.d;\ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00294}00294\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00295}00295\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00296}00296\ \ \ \ \ \ \ \ \ std::priority\_queue<Item,\ std::vector<Item>,\ std::greater<Item>>\ pq;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00297}00297\ \ \ \ \ \ \ \ \ dist[srcId]\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00298}00298\ \ \ \ \ \ \ \ \ pq.push(\{0,\ srcId\});}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00299}00299\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00300}00300\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Dijkstra\ main\ loop}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00301}00301\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (!pq.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00302}00302\ \ \ \ \ \ \ \ \ \ \ \ \ Item\ cur\ =\ pq.top();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ pq.pop();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00304}00304\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00305}00305\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ignore\ outdated\ entries}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00306}00306\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cur.d\ !=\ dist[cur.v])\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00307}00307\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00308}00308\ \ \ \ \ \ \ \ \ \ \ \ \ Server*\ u\ =\ \&ui-\/>canvas-\/>servers[cur.v];}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00309}00309\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00310}00310\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ going\ through\ this\ link\ gives\ a\ shorter\ path}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00311}00311\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (Link*\ l\ :\ u-\/>\mbox{\hyperlink{class_server_a093220050a7836cabb9560eafe7e3a4c}{links}})\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00312}00312\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Server*\ vS\ =\ otherServer(l,\ u);}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00313}00313\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!vS)\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00314}00314\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ v\ =\ vS-\/>\mbox{\hyperlink{class_server_ad430796220d97a4133c1ad93f64019b9}{id}};}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00315}00315\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00316}00316\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ qreal\ nd\ =\ dist[cur.v]\ +\ l-\/>\mbox{\hyperlink{class_link_ab34d7a88a0b034641d6093b7f41eaa0c}{getDistance}}();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00317}00317\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nd\ <\ dist[v])\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00318}00318\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dist[v]\ =\ nd;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00319}00319\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ prev[v]\ =\ cur.v;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00320}00320\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ prevLink[v]\ =\ l;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00321}00321\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pq.push(\{nd,\ v\});}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00322}00322\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00323}00323\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00324}00324\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00325}00325\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00326}00326\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Fill\ distance\ table\ and\ first-\/hop\ information}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00327}00327\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ dstId\ =\ 0;\ dstId\ <\ nServers;\ ++dstId)\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00328}00328\ \ \ \ \ \ \ \ \ \ \ \ \ distanceArray[srcId][dstId]\ =\ (dist[dstId]\ ==\ INF\ ?\ -\/1.0f\ :\ (float)dist[dstId]);}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00329}00329\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00330}00330\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Source\ to\ itself}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00331}00331\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dstId\ ==\ srcId)\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00332}00332\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ src.bestDistance[dstId]\ =\ \{\textcolor{keyword}{nullptr},\ 0\};}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00333}00333\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00334}00334\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00335}00335\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00336}00336\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Unreachable\ destination}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00337}00337\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dist[dstId]\ ==\ INF)\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00338}00338\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ src.bestDistance[dstId]\ =\ \{\textcolor{keyword}{nullptr},\ INF\};}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00339}00339\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00340}00340\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00341}00341\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00342}00342\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Backtrack\ to\ find\ first\ hop}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00343}00343\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ cur\ =\ dstId;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00344}00344\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (prev[cur]\ !=\ -\/1\ \&\&\ prev[cur]\ !=\ srcId)\ cur\ =\ prev[cur];}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00345}00345\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00346}00346\ \ \ \ \ \ \ \ \ \ \ \ \ Link*\ firstHop\ =\ (prev[cur]\ ==\ srcId\ ?\ prevLink[cur]\ :\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00347}00347\ \ \ \ \ \ \ \ \ \ \ \ \ src.bestDistance[dstId]\ =\ \{firstHop,\ dist[dstId]\};}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00348}00348\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00349}00349\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00350}00350\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00351}00351\ \ \ \ \ \textcolor{comment}{//\ Print\ distance\ table\ (debug\ output)}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00352}00352\ \ \ \ \ QString\ header\ =\ \textcolor{stringliteral}{"{}From/To\ |"{}};}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00353}00353\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ nServers;\ ++j)\ header\ +=\ QString(\textcolor{stringliteral}{"{}\ \%1\ |"{}}).arg(j,\ 6);}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00354}00354\ \ \ \ \ qDebug().noquote()\ <<\ header;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00355}00355\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00356}00356\ \ \ \ \ QString\ sep\ =\ \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/|"{}};}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00357}00357\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ nServers;\ ++j)\ sep\ +=\ \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/|"{}};}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00358}00358\ \ \ \ \ qDebug().noquote()\ <<\ sep;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00359}00359\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00360}00360\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ nServers;\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00361}00361\ \ \ \ \ \ \ \ \ QString\ row\ =\ QString(\textcolor{stringliteral}{"{}\%1\ \ \ \ \ \ |"{}}).arg(i,\ 2);}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00362}00362\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ nServers;\ ++j)\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00363}00363\ \ \ \ \ \ \ \ \ \ \ \ \ qreal\ d\ =\ ui-\/>canvas-\/>servers[i].bestDistance[j].second;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00364}00364\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ ==\ j)\ row\ +=\ QString(\textcolor{stringliteral}{"{}\ \%1\ |"{}}).arg(\textcolor{stringliteral}{"{}0"{}},\ 6);}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00365}00365\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (!std::isfinite((\textcolor{keywordtype}{double})d))\ row\ +=\ QString(\textcolor{stringliteral}{"{}\ \%1\ |"{}}).arg(\textcolor{stringliteral}{"{}INF"{}},\ 6);}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00366}00366\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ row\ +=\ QString(\textcolor{stringliteral}{"{}\ \%1\ |"{}}).arg(QString::number(d,\ \textcolor{charliteral}{'f'},\ 1),\ 6);}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00367}00367\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00368}00368\ \ \ \ \ \ \ \ \ qDebug().noquote()\ <<\ row;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00369}00369\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00370}00370\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00371}00371\ \ \ \ \ \textcolor{comment}{//\ Initialize\ each\ drone\ by\ assigning\ it\ to\ the\ server\ of\ the\ area\ it\ is\ overflying}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00372}00372\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \&d\ :\ ui-\/>canvas-\/>drones)\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00373}00373\ \ \ \ \ \ \ \ \ Server*\ s\ =\ d.overflownArea(ui-\/>canvas-\/>servers);}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00374}00374\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (s)\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00375}00375\ \ \ \ \ \ \ \ \ \ \ \ \ d.destination\ =\ Vector2D(s-\/>\mbox{\hyperlink{class_server_a17cfe740f9ce3cc3699c4f18f48a1f81}{position}}.x(),\ s-\/>\mbox{\hyperlink{class_server_a17cfe740f9ce3cc3699c4f18f48a1f81}{position}}.y());}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00376}00376\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00377}00377\ \ \ \ \ \ \ \ \ \ \ \ \ d.destination\ =\ d.position;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00378}00378\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00379}00379\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00380}00380\ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00381}00381\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00382}00382\ \textcolor{keywordtype}{void}\ MainWindow::update()\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00383}00383\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ last=elapsedTimer.elapsed();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00384}00384\ \ \ \ \ \textcolor{keywordtype}{int}\ current=elapsedTimer.elapsed();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00385}00385\ \ \ \ \ \textcolor{keywordtype}{int}\ dt=current-\/last;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00386}00386\ \ \ \ \ \textcolor{comment}{//\ update\ positions\ of\ drones}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00387}00387\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \&drone:ui-\/>canvas-\/>drones)\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00388}00388\ \ \ \ \ \ \ \ \ drone.move(dt/1000.0);}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00389}00389\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00390}00390\ \ \ \ \ ui-\/>canvas-\/>repaint();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00391}00391\ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00392}00392\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00393}00393\ \textcolor{keywordtype}{void}\ MainWindow::on\_actionShow\_graph\_triggered(\textcolor{keywordtype}{bool}\ checked)\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00394}00394\ \ \ \ \ ui-\/>canvas-\/>showGraph=checked;}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00395}00395\ \ \ \ \ ui-\/>canvas-\/>repaint();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00396}00396\ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00397}00397\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00398}00398\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00399}00399\ \textcolor{keywordtype}{void}\ MainWindow::on\_actionMove\_drones\_triggered()\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00400}00400\ \ \ \ \ timer\ =\ \textcolor{keyword}{new}\ QTimer(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00401}00401\ \ \ \ \ timer-\/>setInterval(100);}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00402}00402\ \ \ \ \ connect(timer,SIGNAL(timeout()),\textcolor{keyword}{this},SLOT(update()));}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00403}00403\ \ \ \ \ timer-\/>start();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00404}00404\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00405}00405\ \ \ \ \ elapsedTimer.start();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00406}00406\ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00407}00407\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00408}00408\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00409}00409\ \textcolor{keywordtype}{void}\ MainWindow::on\_actionQuit\_triggered()\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00410}00410\ \ \ \ \ QApplication::quit();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00411}00411\ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00412}00412\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00413}00413\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00414}00414\ \textcolor{keywordtype}{void}\ MainWindow::on\_actionCredits\_triggered()\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00415}00415\ \ \ \ \ QMessageBox::information(\textcolor{keyword}{this},\textcolor{stringliteral}{"{}About\ DroneAndRooms\ program"{}},}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00416}00416\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}My\ tiny\ project.\(\backslash\)nCredit\ Benoît\ Piranda"{}});}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00417}00417\ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00418}00418\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00419}00419\ }
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00420}00420\ \textcolor{keywordtype}{void}\ MainWindow::on\_actionLoad\_triggered()\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00421}00421\ \ \ \ \ \textcolor{keyword}{auto}\ fileName\ =\ QFileDialog::getOpenFileName(\textcolor{keyword}{this},tr(\textcolor{stringliteral}{"{}Open\ json\ description\ file"{}}),\ \textcolor{stringliteral}{"{}../../data"{}},\ tr(\textcolor{stringliteral}{"{}JSON\ Files\ (*.json)"{}}));}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00422}00422\ \ \ \ \ \textcolor{keywordflow}{if}\ (!fileName.isEmpty())\ \{}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00423}00423\ \ \ \ \ \ \ \ \ ui-\/>canvas-\/>clear();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00424}00424\ \ \ \ \ \ \ \ \ loadJson(fileName);}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00425}00425\ \ \ \ \ \ \ \ \ ui-\/>canvas-\/>update();}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00426}00426\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00427}00427\ \}}
+\DoxyCodeLine{\Hypertarget{mainwindow_8cpp_source_l00428}00428\ }
+
+\end{DoxyCode}

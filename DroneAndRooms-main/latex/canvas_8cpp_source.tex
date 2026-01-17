@@ -1,0 +1,121 @@
+\doxysection{canvas.\+cpp}
+\hypertarget{canvas_8cpp_source}{}\label{canvas_8cpp_source}\mbox{\hyperlink{canvas_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{canvas_8h}{canvas.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <QPainter>}}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00004}\mbox{\hyperlink{class_canvas_aeea65f2bfc2be61bdbcaaa3a67c33185}{00004}}\ \mbox{\hyperlink{class_canvas_aeea65f2bfc2be61bdbcaaa3a67c33185}{Canvas::Canvas}}(QWidget\ *parent)\ :\ QWidget\{parent\}\ \{}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00005}00005\ \ \ \ \ setMouseTracking(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00006}00006\ \ \ \ \ windowOrigin=\{0,0\};}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00007}00007\ \ \ \ \ windowSize=\{1,1\};}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00008}00008\ \ \ \ \ windowScale=\{1.0,1.0\};}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00009}00009\ \ \ \ \ droneIconSize=64;}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00010}00010\ \ \ \ \ droneImg.load(\textcolor{stringliteral}{"{}../../../media/drone.png"{}});}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00011}00011\ \}}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00013}\mbox{\hyperlink{class_canvas_a743fefef4af18260e8d56d95f92618aa}{00013}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_canvas_a743fefef4af18260e8d56d95f92618aa}{Canvas::paintEvent}}(QPaintEvent\ *)\ \{}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00014}00014\ \ \ \ \ \textcolor{keyword}{const}\ QRect\ rect(-\/droneIconSize/2,-\/droneIconSize/2,droneIconSize,droneIconSize);}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00016}00016\ \ \ \ \ QPainter\ painter(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00017}00017\ \ \ \ \ QBrush\ whiteBrush(Qt::SolidPattern);}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00018}00018\ \ \ \ \ QPen\ serverPen(Qt::black);}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00019}00019\ \ \ \ \ serverPen.setWidth(3);}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00020}00020\ \ \ \ \ QFont\ myFont(\textcolor{stringliteral}{"{}Arial"{}},14,QFont::Black);}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00021}00021\ \ \ \ \ QFontMetrics\ fm(myFont);}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00022}00022\ \ \ \ \ painter.setFont(myFont);}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00023}00023\ \ \ \ \ QPen\ penLink(Qt::DotLine);}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00024}00024\ \ \ \ \ penLink.setColor(Qt::lightGray);}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00025}00025\ \ \ \ \ \textcolor{comment}{//\ background\ of\ the\ window}}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00026}00026\ \ \ \ \ penLink.setWidth(3);}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00027}00027\ \ \ \ \ whiteBrush.setColor(Qt::white);}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00028}00028\ \ \ \ \ painter.fillRect(0,0,width(),height(),whiteBrush);}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00030}00030\ \ \ \ \ painter.save();\ \textcolor{comment}{//\ drawing\ area\ coordinate\ system}}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00031}00031\ \ \ \ \ painter.scale(windowScale.width(),windowScale.height());}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00032}00032\ \ \ \ \ painter.translate(-\/windowOrigin);}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00035}00035\ \ \ \ \ \textcolor{comment}{//\ drawing\ the\ servers}}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00036}00036\ \ \ \ \ QRect\ r;}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00037}00037\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \&s:\mbox{\hyperlink{class_canvas_aaf24f55c610e69d1dc0494cf34c67294}{servers}})\ \{}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ painter.setBrush(s.color);}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ s.area.draw(painter);}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ painter.save();}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ painter.translate(s.position);}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ painter.setPen(serverPen);}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ painter.setBrush(s.color);}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ painter.drawEllipse(-\/25,-\/25,50,50);}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ painter.setBrush(Qt::white);}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ painter.drawEllipse(-\/15,-\/15,30,30);}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ painter.setBrush(Qt::black);}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ painter.drawEllipse(-\/5,-\/5,10,10);}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ tw=fm.horizontalAdvance(s.name)+2;}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ th=fm.height()+2;}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ r.setRect(-\/tw/2,-\/25-\/th,tw,th);}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ painter.drawText(r,s.name);}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ painter.restore();}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00056}00056\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00058}00058\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_canvas_a22582f3888250ffb94a6de0212d74a94}{showGraph}})\ \{}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ drawing\ the\ links}}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ painter.setPen(penLink);}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \&l:\mbox{\hyperlink{class_canvas_ad373141fd1ac9d478a6c5b36af7e30da}{links}}\ )\ \{}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ l-\/>draw(painter);}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00064}00064\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00066}00066\ \ \ \ \ \textcolor{comment}{//\ drawing\ the\ drones}}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00067}00067\ \ \ \ \ painter.setPen(Qt::white);}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00068}00068\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \&d:\mbox{\hyperlink{class_canvas_a44899dfd7436c86e31e65430869aa511}{drones}})\ \{}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ painter.save();}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ place\ and\ orient\ the\ drone}}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ painter.translate(d.position.x,d.position.y);}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ painter.rotate(d.azimut);}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ painter.drawImage(rect,droneImg);}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ tw=fm.horizontalAdvance(d.name)+2;}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ th=fm.height()+2;}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ r.setRect(-\/tw/2,-\/15,tw,th);}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ painter.drawText(r,d.name);}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ painter.restore();}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00081}00081\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00082}00082\ \ \ \ \ painter.restore();}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00084}00084\ \}}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00086}\mbox{\hyperlink{class_canvas_af6760030ef7aaf5cf73e89fbb55bee26}{00086}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_canvas_af6760030ef7aaf5cf73e89fbb55bee26}{Canvas::resizeEvent}}(QResizeEvent\ *event)\ \{}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00087}00087\ \ \ \ \ \textcolor{keywordtype}{int}\ w\ =\ \textcolor{keyword}{event}-\/>size().width();}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00088}00088\ \ \ \ \ \textcolor{keywordtype}{int}\ h\ =\ \textcolor{keyword}{event}-\/>size().height();}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00090}00090\ \ \ \ \ \textcolor{comment}{//\ Calcule\ la\ hauteur\ voulue\ selon\ le\ ratio}}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00091}00091\ \ \ \ \ \textcolor{keywordtype}{int}\ idealH\ =\ w\ *\ windowSize.height()\ /\ windowSize.width();}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00093}00093\ \ \ \ \ \textcolor{comment}{//\ Si\ la\ hauteur\ réelle\ ne\ correspond\ pas,\ on\ corrige}}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00094}00094\ \ \ \ \ \textcolor{keywordflow}{if}\ (idealH\ <\ h)\ \{}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ resize(w,\ idealH);}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ move(0,(h-\/idealH)/2);}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00097}00097\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ idealW\ =\ h\ *\ windowSize.width()\ /\ windowSize.height();}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (idealW!=w)\ \{}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ resize(idealW,\ h);}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ move((w-\/idealW)/2,0);}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00103}00103\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00105}00105\ \ \ \ \ QWidget::resizeEvent(event);}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00107}00107\ \ \ \ \ windowScale=\{qreal(width())/windowSize.width(),}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ qreal(height())/windowSize.height()\};}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00109}00109\ \}}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00112}\mbox{\hyperlink{class_canvas_ac766a4e369f781943df021b80e5922c4}{00112}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_canvas_ac766a4e369f781943df021b80e5922c4}{Canvas::mousePressEvent}}(QMouseEvent\ *event)\ \{}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00114}00114\ \ \ \ \ repaint();}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00115}00115\ \}}
+\DoxyCodeLine{\Hypertarget{canvas_8cpp_source_l00116}00116\ }
+
+\end{DoxyCode}

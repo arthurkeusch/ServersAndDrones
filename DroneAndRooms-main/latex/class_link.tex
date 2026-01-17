@@ -1,0 +1,117 @@
+\doxysection{Link Class Reference}
+\hypertarget{class_link}{}\label{class_link}\index{Link@{Link}}
+
+
+{\ttfamily \#include $<$serveranddrone.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_link_ad8ee63f9c5acce1a85992f9b1af563d9}{Link}} (\mbox{\hyperlink{class_server}{Server}} \texorpdfstring{$\ast$}{*}n1, \mbox{\hyperlink{class_server}{Server}} \texorpdfstring{$\ast$}{*}n2, const QPair$<$ \mbox{\hyperlink{class_vector2_d}{Vector2D}}, \mbox{\hyperlink{class_vector2_d}{Vector2D}} $>$ \&edge)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_link}{Link} \+: create a new link. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_link_a2f2468eb363c399cdfb03c0e90b6afe7}{draw}} (QPainter \&painter)
+\item 
+\mbox{\hyperlink{class_server}{Server}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_link_ad8d98f25c42980a9db35299ee9e440fc}{get\+Node1}} ()
+\item 
+\mbox{\hyperlink{class_server}{Server}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_link_a54716a0cb68ac71c1cb46e113e2789ee}{get\+Node2}} ()
+\item 
+qreal \mbox{\hyperlink{class_link_ab34d7a88a0b034641d6093b7f41eaa0c}{get\+Distance}} () const
+\item 
+\mbox{\hyperlink{class_vector2_d}{Vector2D}} \mbox{\hyperlink{class_link_abbfaf14fe589d975378a970b135bb1c9}{get\+Edge\+Center}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{serveranddrone_8h_source_l00031}{31}} of file \mbox{\hyperlink{serveranddrone_8h_source}{serveranddrone.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_link_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_link_ad8ee63f9c5acce1a85992f9b1af563d9}\index{Link@{Link}!Link@{Link}}
+\index{Link@{Link}!Link@{Link}}
+\doxysubsubsection{\texorpdfstring{Link()}{Link()}}
+{\footnotesize\ttfamily \label{class_link_ad8ee63f9c5acce1a85992f9b1af563d9} 
+Link\+::\+Link (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_server}{Server}} \texorpdfstring{$\ast$}{*}}]{n1}{, }\item[{\mbox{\hyperlink{class_server}{Server}} \texorpdfstring{$\ast$}{*}}]{n2}{, }\item[{const QPair$<$ \mbox{\hyperlink{class_vector2_d}{Vector2D}}, \mbox{\hyperlink{class_vector2_d}{Vector2D}} $>$ \&}]{edge}{}\end{DoxyParamCaption})}
+
+
+
+\doxylink{class_link}{Link} \+: create a new link. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n1} & \+: one server \\
+\hline
+{\em n2} & \+: the other server \\
+\hline
+{\em edge} & \+: the common edge vertices (extremity) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{serveranddrone_8cpp_source_l00004}{4}} of file \mbox{\hyperlink{serveranddrone_8cpp_source}{serveranddrone.\+cpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_link_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_link_a2f2468eb363c399cdfb03c0e90b6afe7}\index{Link@{Link}!draw@{draw}}
+\index{draw@{draw}!Link@{Link}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily \label{class_link_a2f2468eb363c399cdfb03c0e90b6afe7} 
+void Link\+::draw (\begin{DoxyParamCaption}\item[{QPainter \&}]{painter}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{serveranddrone_8cpp_source_l00013}{13}} of file \mbox{\hyperlink{serveranddrone_8cpp_source}{serveranddrone.\+cpp}}.
+
+\Hypertarget{class_link_ab34d7a88a0b034641d6093b7f41eaa0c}\index{Link@{Link}!getDistance@{getDistance}}
+\index{getDistance@{getDistance}!Link@{Link}}
+\doxysubsubsection{\texorpdfstring{getDistance()}{getDistance()}}
+{\footnotesize\ttfamily \label{class_link_ab34d7a88a0b034641d6093b7f41eaa0c} 
+qreal Link\+::get\+Distance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{serveranddrone_8h_source_l00043}{43}} of file \mbox{\hyperlink{serveranddrone_8h_source}{serveranddrone.\+h}}.
+
+\Hypertarget{class_link_abbfaf14fe589d975378a970b135bb1c9}\index{Link@{Link}!getEdgeCenter@{getEdgeCenter}}
+\index{getEdgeCenter@{getEdgeCenter}!Link@{Link}}
+\doxysubsubsection{\texorpdfstring{getEdgeCenter()}{getEdgeCenter()}}
+{\footnotesize\ttfamily \label{class_link_abbfaf14fe589d975378a970b135bb1c9} 
+\mbox{\hyperlink{class_vector2_d}{Vector2D}} Link\+::get\+Edge\+Center (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{serveranddrone_8h_source_l00044}{44}} of file \mbox{\hyperlink{serveranddrone_8h_source}{serveranddrone.\+h}}.
+
+\Hypertarget{class_link_ad8d98f25c42980a9db35299ee9e440fc}\index{Link@{Link}!getNode1@{getNode1}}
+\index{getNode1@{getNode1}!Link@{Link}}
+\doxysubsubsection{\texorpdfstring{getNode1()}{getNode1()}}
+{\footnotesize\ttfamily \label{class_link_ad8d98f25c42980a9db35299ee9e440fc} 
+\mbox{\hyperlink{class_server}{Server}} \texorpdfstring{$\ast$}{*} Link\+::get\+Node1 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{serveranddrone_8h_source_l00041}{41}} of file \mbox{\hyperlink{serveranddrone_8h_source}{serveranddrone.\+h}}.
+
+\Hypertarget{class_link_a54716a0cb68ac71c1cb46e113e2789ee}\index{Link@{Link}!getNode2@{getNode2}}
+\index{getNode2@{getNode2}!Link@{Link}}
+\doxysubsubsection{\texorpdfstring{getNode2()}{getNode2()}}
+{\footnotesize\ttfamily \label{class_link_a54716a0cb68ac71c1cb46e113e2789ee} 
+\mbox{\hyperlink{class_server}{Server}} \texorpdfstring{$\ast$}{*} Link\+::get\+Node2 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{serveranddrone_8h_source_l00042}{42}} of file \mbox{\hyperlink{serveranddrone_8h_source}{serveranddrone.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{serveranddrone_8h}{serveranddrone.\+h}}\item 
+\mbox{\hyperlink{serveranddrone_8cpp}{serveranddrone.\+cpp}}\end{DoxyCompactItemize}

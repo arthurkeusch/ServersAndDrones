@@ -1,0 +1,68 @@
+\doxysection{determinant.\+cpp}
+\hypertarget{determinant_8cpp_source}{}\label{determinant_8cpp_source}\mbox{\hyperlink{determinant_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00001}00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00002}00002\ \textcolor{comment}{//\ Created\ by\ bpiranda\ on\ 23/11/2019.}}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00003}00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{determinant_8h}{determinant.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00006}\mbox{\hyperlink{class_matrix22_a847e41917439faa7d5707bbf1332b5a0}{00006}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_matrix22_a847e41917439faa7d5707bbf1332b5a0}{Matrix22::get2x2From3x3}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_matrix33}{Matrix33}}\ \&mat33,\textcolor{keywordtype}{int}\ shadowLin,\ \textcolor{keywordtype}{int}\ shadowCol)\ \{}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00007}00007\ \ \ \ \ \textcolor{keywordtype}{int}\ l=0;}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00008}00008\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ lig=0;\ lig<3;\ lig++)\ \{}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00009}00009\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (lig!=shadowLin)\ \{}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00010}00010\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ c=0;}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00011}00011\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ col=0;\ col<3;\ col++)\ \{}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00012}00012\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (col!=shadowCol)\ \{}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00013}00013\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_matrix22_af43a553822d93f8d38fdf057603be0ae}{m}}[l][c]\ =\ mat33.\mbox{\hyperlink{class_matrix33_a78b7575191a5193b403a29a387ea9012}{m}}[lig][col];}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00014}00014\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ c++;}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00015}00015\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00016}00016\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ l++;}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00018}00018\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00019}00019\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00020}00020\ \}}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00022}\mbox{\hyperlink{class_matrix33_af5d566e26f06afb7937b70fc86d568dd}{00022}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_matrix33_af5d566e26f06afb7937b70fc86d568dd}{Matrix33::get3x3From4x4}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_matrix44}{Matrix44}}\ \&mat44,\textcolor{keywordtype}{int}\ shadowLin,\ \textcolor{keywordtype}{int}\ shadowCol)\ \{}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00023}00023\ \ \ \ \ \textcolor{keywordtype}{int}\ l=0;}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00024}00024\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ lig=0;\ lig<4;\ lig++)\ \{}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (lig!=shadowLin)\ \{}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ c=0;}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ col=0;\ col<4;\ col++)\ \{}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (col!=shadowCol)\ \{}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_matrix33_a78b7575191a5193b403a29a387ea9012}{m}}[l][c]\ =\ mat44.\mbox{\hyperlink{class_matrix44_a5fa44c68088fb376f652e59cf085b749}{m}}[lig][col];}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ c++;}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ l++;}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00035}00035\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00036}00036\ \}}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00038}\mbox{\hyperlink{class_matrix33_a91bdfd4a4ea7467fbb843761a830f090}{00038}}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_matrix33_a91bdfd4a4ea7467fbb843761a830f090}{Matrix33::determinant}}()\ \{}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00039}00039\ \ \ \ \ \mbox{\hyperlink{class_matrix22}{Matrix22}}\ mat22;}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00040}00040\ \ \ \ \ \textcolor{keywordtype}{float}\ det=0;}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00042}00042\ \ \ \ \ \textcolor{keywordtype}{float}\ sign=1;}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00043}00043\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<3;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ mat22.\mbox{\hyperlink{class_matrix22_a847e41917439faa7d5707bbf1332b5a0}{get2x2From3x3}}(*\textcolor{keyword}{this},i,0);}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ det\ +=\ sign*\mbox{\hyperlink{class_matrix33_a78b7575191a5193b403a29a387ea9012}{m}}[i][0]*mat22.\mbox{\hyperlink{class_matrix22_ad18ae363d30a93115d9ac2fb53e6e71a}{determinant}}();}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ sign\ =\ -\/sign;}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00047}00047\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00048}00048\ \ \ \ \ \textcolor{keywordflow}{return}\ det;}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00049}00049\ \}}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00052}\mbox{\hyperlink{class_matrix44_aa04b9a3ed2ab380ba4aa3b91d514c4cd}{00052}}\ \textcolor{keywordtype}{float}\ \ \mbox{\hyperlink{class_matrix44_aa04b9a3ed2ab380ba4aa3b91d514c4cd}{Matrix44::determinant}}()\ \{}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00053}00053\ \ \ \ \ \mbox{\hyperlink{class_matrix33}{Matrix33}}\ mat33;}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00054}00054\ \ \ \ \ \textcolor{keywordtype}{float}\ det=0;}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00056}00056\ \ \ \ \ \textcolor{keywordtype}{float}\ sign=1;}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00057}00057\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<4;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ mat33.\mbox{\hyperlink{class_matrix33_af5d566e26f06afb7937b70fc86d568dd}{get3x3From4x4}}(*\textcolor{keyword}{this},i,0);}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ det\ +=\ sign*\mbox{\hyperlink{class_matrix44_a5fa44c68088fb376f652e59cf085b749}{m}}[i][0]*mat33.\mbox{\hyperlink{class_matrix33_a91bdfd4a4ea7467fbb843761a830f090}{determinant}}();}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ sign\ =\ -\/sign;}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00061}00061\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00062}00062\ \ \ \ \ \textcolor{keywordflow}{return}\ det;}
+\DoxyCodeLine{\Hypertarget{determinant_8cpp_source_l00063}00063\ \}}
+
+\end{DoxyCode}

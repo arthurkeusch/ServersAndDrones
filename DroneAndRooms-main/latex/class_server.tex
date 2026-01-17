@@ -1,0 +1,110 @@
+\doxysection{Server Class Reference}
+\hypertarget{class_server}{}\label{class_server}\index{Server@{Server}}
+
+
+{\ttfamily \#include $<$serveranddrone.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_server_ad430796220d97a4133c1ad93f64019b9}{id}}
+\item 
+QString \mbox{\hyperlink{class_server_a5f81566ed110e47da23ed78bc53a5599}{name}}
+\item 
+QPointF \mbox{\hyperlink{class_server_a17cfe740f9ce3cc3699c4f18f48a1f81}{position}}
+\item 
+QColor \mbox{\hyperlink{class_server_aa54fe166d843501ab0a3197cdc2f30cb}{color}}
+\item 
+\mbox{\hyperlink{class_polygon}{Polygon}} \mbox{\hyperlink{class_server_a1dce4ef5340e95c36e2c95b11f6eb76d}{area}}
+\item 
+QList$<$ \mbox{\hyperlink{class_link}{Link}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_server_a093220050a7836cabb9560eafe7e3a4c}{links}}
+\item 
+QVector$<$ QPair$<$ \mbox{\hyperlink{class_link}{Link}} \texorpdfstring{$\ast$}{*}, qreal $>$ $>$ \mbox{\hyperlink{class_server_a69cf94dcbca6362483a7d1065be0a53c}{best\+Distance}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{serveranddrone_8h_source_l00016}{16}} of file \mbox{\hyperlink{serveranddrone_8h_source}{serveranddrone.\+h}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_server_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_server_a1dce4ef5340e95c36e2c95b11f6eb76d}\index{Server@{Server}!area@{area}}
+\index{area@{area}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{area}{area}}
+{\footnotesize\ttfamily \label{class_server_a1dce4ef5340e95c36e2c95b11f6eb76d} 
+\mbox{\hyperlink{class_polygon}{Polygon}} Server\+::area}
+
+
+
+Definition at line \mbox{\hyperlink{serveranddrone_8h_source_l00022}{22}} of file \mbox{\hyperlink{serveranddrone_8h_source}{serveranddrone.\+h}}.
+
+\Hypertarget{class_server_a69cf94dcbca6362483a7d1065be0a53c}\index{Server@{Server}!bestDistance@{bestDistance}}
+\index{bestDistance@{bestDistance}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{bestDistance}{bestDistance}}
+{\footnotesize\ttfamily \label{class_server_a69cf94dcbca6362483a7d1065be0a53c} 
+QVector$<$QPair$<$\mbox{\hyperlink{class_link}{Link}}\texorpdfstring{$\ast$}{*},qreal$>$ $>$ Server\+::best\+Distance}
+
+best\+Distance\+: vector of pair(link, distance) link is the link to follow from the current server to reach a server destination for example best\+Distance\mbox{[}0\mbox{]}=\{link to go to server\#0,distance to this server\} 
+
+Definition at line \mbox{\hyperlink{serveranddrone_8h_source_l00028}{28}} of file \mbox{\hyperlink{serveranddrone_8h_source}{serveranddrone.\+h}}.
+
+\Hypertarget{class_server_aa54fe166d843501ab0a3197cdc2f30cb}\index{Server@{Server}!color@{color}}
+\index{color@{color}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{color}{color}}
+{\footnotesize\ttfamily \label{class_server_aa54fe166d843501ab0a3197cdc2f30cb} 
+QColor Server\+::color}
+
+
+
+Definition at line \mbox{\hyperlink{serveranddrone_8h_source_l00021}{21}} of file \mbox{\hyperlink{serveranddrone_8h_source}{serveranddrone.\+h}}.
+
+\Hypertarget{class_server_ad430796220d97a4133c1ad93f64019b9}\index{Server@{Server}!id@{id}}
+\index{id@{id}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily \label{class_server_ad430796220d97a4133c1ad93f64019b9} 
+int Server\+::id}
+
+
+
+Definition at line \mbox{\hyperlink{serveranddrone_8h_source_l00018}{18}} of file \mbox{\hyperlink{serveranddrone_8h_source}{serveranddrone.\+h}}.
+
+\Hypertarget{class_server_a093220050a7836cabb9560eafe7e3a4c}\index{Server@{Server}!links@{links}}
+\index{links@{links}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{links}{links}}
+{\footnotesize\ttfamily \label{class_server_a093220050a7836cabb9560eafe7e3a4c} 
+QList$<$\mbox{\hyperlink{class_link}{Link}}\texorpdfstring{$\ast$}{*}$>$ Server\+::links}
+
+
+
+Definition at line \mbox{\hyperlink{serveranddrone_8h_source_l00023}{23}} of file \mbox{\hyperlink{serveranddrone_8h_source}{serveranddrone.\+h}}.
+
+\Hypertarget{class_server_a5f81566ed110e47da23ed78bc53a5599}\index{Server@{Server}!name@{name}}
+\index{name@{name}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily \label{class_server_a5f81566ed110e47da23ed78bc53a5599} 
+QString Server\+::name}
+
+
+
+Definition at line \mbox{\hyperlink{serveranddrone_8h_source_l00019}{19}} of file \mbox{\hyperlink{serveranddrone_8h_source}{serveranddrone.\+h}}.
+
+\Hypertarget{class_server_a17cfe740f9ce3cc3699c4f18f48a1f81}\index{Server@{Server}!position@{position}}
+\index{position@{position}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{position}{position}}
+{\footnotesize\ttfamily \label{class_server_a17cfe740f9ce3cc3699c4f18f48a1f81} 
+QPointF Server\+::position}
+
+
+
+Definition at line \mbox{\hyperlink{serveranddrone_8h_source_l00020}{20}} of file \mbox{\hyperlink{serveranddrone_8h_source}{serveranddrone.\+h}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{serveranddrone_8h}{serveranddrone.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,202 @@
+\doxysection{Canvas Class Reference}
+\hypertarget{class_canvas}{}\label{class_canvas}\index{Canvas@{Canvas}}
+
+
+{\ttfamily \#include $<$canvas.\+h$>$}
+
+Inheritance diagram for Canvas\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_canvas}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_canvas_aeea65f2bfc2be61bdbcaaa3a67c33185}{Canvas}} (QWidget \texorpdfstring{$\ast$}{*}parent=nullptr)
+\item 
+\mbox{\hyperlink{class_canvas_a237c4549ad2e27c729cd1f71e89f0fd9}{\texorpdfstring{$\sim$}{\string~}\+Canvas}} ()
+\item 
+void \mbox{\hyperlink{class_canvas_ac4559a6535f497f17415032632aa9f6a}{clear}} ()
+\item 
+void \mbox{\hyperlink{class_canvas_a4c8f1b5bdbffb5930d0b91e2f5cf57ed}{set\+Window}} (const QPoint \&origin, const QSize \&size)
+\item 
+QPoint \mbox{\hyperlink{class_canvas_aa4c73c8325eabe4e517a6c1e427ac42d}{get\+Origin}} ()
+\item 
+QSize \mbox{\hyperlink{class_canvas_a0d35aa520988c33a641a971a6b922335}{get\+Size}} ()
+\item 
+void \mbox{\hyperlink{class_canvas_a743fefef4af18260e8d56d95f92618aa}{paint\+Event}} (QPaint\+Event \texorpdfstring{$\ast$}{*}) override
+\item 
+void \mbox{\hyperlink{class_canvas_af6760030ef7aaf5cf73e89fbb55bee26}{resize\+Event}} (QResize\+Event \texorpdfstring{$\ast$}{*}event) override
+\item 
+void \mbox{\hyperlink{class_canvas_ac766a4e369f781943df021b80e5922c4}{mouse\+Press\+Event}} (QMouse\+Event \texorpdfstring{$\ast$}{*}event) override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+QList$<$ \mbox{\hyperlink{class_server}{Server}} $>$ \mbox{\hyperlink{class_canvas_aaf24f55c610e69d1dc0494cf34c67294}{servers}}
+\item 
+QList$<$ \mbox{\hyperlink{class_drone}{Drone}} $>$ \mbox{\hyperlink{class_canvas_a44899dfd7436c86e31e65430869aa511}{drones}}
+\item 
+QList$<$ \mbox{\hyperlink{class_link}{Link}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_canvas_ad373141fd1ac9d478a6c5b36af7e30da}{links}}
+\item 
+bool \mbox{\hyperlink{class_canvas_a22582f3888250ffb94a6de0212d74a94}{show\+Graph}} =false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{canvas_8h_source_l00009}{9}} of file \mbox{\hyperlink{canvas_8h_source}{canvas.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_canvas_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_canvas_aeea65f2bfc2be61bdbcaaa3a67c33185}\index{Canvas@{Canvas}!Canvas@{Canvas}}
+\index{Canvas@{Canvas}!Canvas@{Canvas}}
+\doxysubsubsection{\texorpdfstring{Canvas()}{Canvas()}}
+{\footnotesize\ttfamily \label{class_canvas_aeea65f2bfc2be61bdbcaaa3a67c33185} 
+Canvas\+::\+Canvas (\begin{DoxyParamCaption}\item[{QWidget \texorpdfstring{$\ast$}{*}}]{parent}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Definition at line \mbox{\hyperlink{canvas_8cpp_source_l00004}{4}} of file \mbox{\hyperlink{canvas_8cpp_source}{canvas.\+cpp}}.
+
+\Hypertarget{class_canvas_a237c4549ad2e27c729cd1f71e89f0fd9}\index{Canvas@{Canvas}!````~Canvas@{\texorpdfstring{$\sim$}{\string~}Canvas}}
+\index{````~Canvas@{\texorpdfstring{$\sim$}{\string~}Canvas}!Canvas@{Canvas}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Canvas()}{\string~Canvas()}}
+{\footnotesize\ttfamily \label{class_canvas_a237c4549ad2e27c729cd1f71e89f0fd9} 
+Canvas\+::\texorpdfstring{$\sim$}{\string~}\+Canvas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{canvas_8h_source_l00013}{13}} of file \mbox{\hyperlink{canvas_8h_source}{canvas.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_canvas_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_canvas_ac4559a6535f497f17415032632aa9f6a}\index{Canvas@{Canvas}!clear@{clear}}
+\index{clear@{clear}!Canvas@{Canvas}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily \label{class_canvas_ac4559a6535f497f17415032632aa9f6a} 
+void Canvas\+::clear (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{canvas_8h_source_l00017}{17}} of file \mbox{\hyperlink{canvas_8h_source}{canvas.\+h}}.
+
+\Hypertarget{class_canvas_aa4c73c8325eabe4e517a6c1e427ac42d}\index{Canvas@{Canvas}!getOrigin@{getOrigin}}
+\index{getOrigin@{getOrigin}!Canvas@{Canvas}}
+\doxysubsubsection{\texorpdfstring{getOrigin()}{getOrigin()}}
+{\footnotesize\ttfamily \label{class_canvas_aa4c73c8325eabe4e517a6c1e427ac42d} 
+QPoint Canvas\+::get\+Origin (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{canvas_8h_source_l00030}{30}} of file \mbox{\hyperlink{canvas_8h_source}{canvas.\+h}}.
+
+\Hypertarget{class_canvas_a0d35aa520988c33a641a971a6b922335}\index{Canvas@{Canvas}!getSize@{getSize}}
+\index{getSize@{getSize}!Canvas@{Canvas}}
+\doxysubsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily \label{class_canvas_a0d35aa520988c33a641a971a6b922335} 
+QSize Canvas\+::get\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{canvas_8h_source_l00031}{31}} of file \mbox{\hyperlink{canvas_8h_source}{canvas.\+h}}.
+
+\Hypertarget{class_canvas_ac766a4e369f781943df021b80e5922c4}\index{Canvas@{Canvas}!mousePressEvent@{mousePressEvent}}
+\index{mousePressEvent@{mousePressEvent}!Canvas@{Canvas}}
+\doxysubsubsection{\texorpdfstring{mousePressEvent()}{mousePressEvent()}}
+{\footnotesize\ttfamily \label{class_canvas_ac766a4e369f781943df021b80e5922c4} 
+void Canvas\+::mouse\+Press\+Event (\begin{DoxyParamCaption}\item[{QMouse\+Event \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Definition at line \mbox{\hyperlink{canvas_8cpp_source_l00112}{112}} of file \mbox{\hyperlink{canvas_8cpp_source}{canvas.\+cpp}}.
+
+\Hypertarget{class_canvas_a743fefef4af18260e8d56d95f92618aa}\index{Canvas@{Canvas}!paintEvent@{paintEvent}}
+\index{paintEvent@{paintEvent}!Canvas@{Canvas}}
+\doxysubsubsection{\texorpdfstring{paintEvent()}{paintEvent()}}
+{\footnotesize\ttfamily \label{class_canvas_a743fefef4af18260e8d56d95f92618aa} 
+void Canvas\+::paint\+Event (\begin{DoxyParamCaption}\item[{QPaint\+Event \texorpdfstring{$\ast$}{*}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Definition at line \mbox{\hyperlink{canvas_8cpp_source_l00013}{13}} of file \mbox{\hyperlink{canvas_8cpp_source}{canvas.\+cpp}}.
+
+\Hypertarget{class_canvas_af6760030ef7aaf5cf73e89fbb55bee26}\index{Canvas@{Canvas}!resizeEvent@{resizeEvent}}
+\index{resizeEvent@{resizeEvent}!Canvas@{Canvas}}
+\doxysubsubsection{\texorpdfstring{resizeEvent()}{resizeEvent()}}
+{\footnotesize\ttfamily \label{class_canvas_af6760030ef7aaf5cf73e89fbb55bee26} 
+void Canvas\+::resize\+Event (\begin{DoxyParamCaption}\item[{QResize\+Event \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Definition at line \mbox{\hyperlink{canvas_8cpp_source_l00086}{86}} of file \mbox{\hyperlink{canvas_8cpp_source}{canvas.\+cpp}}.
+
+\Hypertarget{class_canvas_a4c8f1b5bdbffb5930d0b91e2f5cf57ed}\index{Canvas@{Canvas}!setWindow@{setWindow}}
+\index{setWindow@{setWindow}!Canvas@{Canvas}}
+\doxysubsubsection{\texorpdfstring{setWindow()}{setWindow()}}
+{\footnotesize\ttfamily \label{class_canvas_a4c8f1b5bdbffb5930d0b91e2f5cf57ed} 
+void Canvas\+::set\+Window (\begin{DoxyParamCaption}\item[{const QPoint \&}]{origin}{, }\item[{const QSize \&}]{size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{canvas_8h_source_l00025}{25}} of file \mbox{\hyperlink{canvas_8h_source}{canvas.\+h}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_canvas_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_canvas_a44899dfd7436c86e31e65430869aa511}\index{Canvas@{Canvas}!drones@{drones}}
+\index{drones@{drones}!Canvas@{Canvas}}
+\doxysubsubsection{\texorpdfstring{drones}{drones}}
+{\footnotesize\ttfamily \label{class_canvas_a44899dfd7436c86e31e65430869aa511} 
+QList$<$\mbox{\hyperlink{class_drone}{Drone}}$>$ Canvas\+::drones}
+
+
+
+Definition at line \mbox{\hyperlink{canvas_8h_source_l00037}{37}} of file \mbox{\hyperlink{canvas_8h_source}{canvas.\+h}}.
+
+\Hypertarget{class_canvas_ad373141fd1ac9d478a6c5b36af7e30da}\index{Canvas@{Canvas}!links@{links}}
+\index{links@{links}!Canvas@{Canvas}}
+\doxysubsubsection{\texorpdfstring{links}{links}}
+{\footnotesize\ttfamily \label{class_canvas_ad373141fd1ac9d478a6c5b36af7e30da} 
+QList$<$\mbox{\hyperlink{class_link}{Link}}\texorpdfstring{$\ast$}{*}$>$ Canvas\+::links}
+
+
+
+Definition at line \mbox{\hyperlink{canvas_8h_source_l00038}{38}} of file \mbox{\hyperlink{canvas_8h_source}{canvas.\+h}}.
+
+\Hypertarget{class_canvas_aaf24f55c610e69d1dc0494cf34c67294}\index{Canvas@{Canvas}!servers@{servers}}
+\index{servers@{servers}!Canvas@{Canvas}}
+\doxysubsubsection{\texorpdfstring{servers}{servers}}
+{\footnotesize\ttfamily \label{class_canvas_aaf24f55c610e69d1dc0494cf34c67294} 
+QList$<$\mbox{\hyperlink{class_server}{Server}}$>$ Canvas\+::servers}
+
+
+
+Definition at line \mbox{\hyperlink{canvas_8h_source_l00036}{36}} of file \mbox{\hyperlink{canvas_8h_source}{canvas.\+h}}.
+
+\Hypertarget{class_canvas_a22582f3888250ffb94a6de0212d74a94}\index{Canvas@{Canvas}!showGraph@{showGraph}}
+\index{showGraph@{showGraph}!Canvas@{Canvas}}
+\doxysubsubsection{\texorpdfstring{showGraph}{showGraph}}
+{\footnotesize\ttfamily \label{class_canvas_a22582f3888250ffb94a6de0212d74a94} 
+bool Canvas\+::show\+Graph =false}
+
+
+
+Definition at line \mbox{\hyperlink{canvas_8h_source_l00039}{39}} of file \mbox{\hyperlink{canvas_8h_source}{canvas.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{canvas_8h}{canvas.\+h}}\item 
+\mbox{\hyperlink{canvas_8cpp}{canvas.\+cpp}}\end{DoxyCompactItemize}

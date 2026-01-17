@@ -1,0 +1,133 @@
+\doxysection{serveranddrone.\+cpp}
+\hypertarget{serveranddrone_8cpp_source}{}\label{serveranddrone_8cpp_source}\mbox{\hyperlink{serveranddrone_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{serveranddrone_8h}{serveranddrone.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <QDebug>}}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00004}\mbox{\hyperlink{class_link_ad8ee63f9c5acce1a85992f9b1af563d9}{00004}}\ \mbox{\hyperlink{class_link_ad8ee63f9c5acce1a85992f9b1af563d9}{Link::Link}}(\mbox{\hyperlink{class_server}{Server}}\ *n1,\mbox{\hyperlink{class_server}{Server}}\ *n2,\textcolor{keyword}{const}\ QPair<Vector2D,Vector2D>\ \&edge):}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00005}00005\ \ \ \ \ node1(n1),node2(n2)\ \{}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00006}00006\ \ \ \ \ \textcolor{comment}{//\ computation\ of\ the\ length\ of\ the\ link}}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00007}00007\ \ \ \ \ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ center=0.5*(edge.first+edge.second);}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00008}00008\ \ \ \ \ distance\ =\ (center-\/\mbox{\hyperlink{class_vector2_d}{Vector2D}}(n1-\/>\mbox{\hyperlink{class_server_a17cfe740f9ce3cc3699c4f18f48a1f81}{position}}.x(),n1-\/>\mbox{\hyperlink{class_server_a17cfe740f9ce3cc3699c4f18f48a1f81}{position}}.y())).\mbox{\hyperlink{class_vector2_d_ab08635b0482451cc43b5b399034eff2f}{length}}();}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00009}00009\ \ \ \ \ distance\ +=\ (center-\/\mbox{\hyperlink{class_vector2_d}{Vector2D}}(n2-\/>\mbox{\hyperlink{class_server_a17cfe740f9ce3cc3699c4f18f48a1f81}{position}}.x(),n2-\/>\mbox{\hyperlink{class_server_a17cfe740f9ce3cc3699c4f18f48a1f81}{position}}.y())).length();}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00010}00010\ \ \ \ \ edgeCenter=QPointF(center.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}},center.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}});}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00011}00011\ \}}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00013}\mbox{\hyperlink{class_link_a2f2468eb363c399cdfb03c0e90b6afe7}{00013}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_link_a2f2468eb363c399cdfb03c0e90b6afe7}{Link::draw}}(QPainter\ \&painter)\ \{}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00014}00014\ \ \ \ \ painter.drawLine(node1-\/>position,edgeCenter);}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00015}00015\ \ \ \ \ painter.drawLine(node2-\/>position,edgeCenter);}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00016}00016\ \}}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00018}\mbox{\hyperlink{class_drone_aa751c1737fd884fa174062840b44b77a}{00018}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_drone_aa751c1737fd884fa174062840b44b77a}{Drone::move}}(qreal\ dt)\ \{}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00020}00020\ \ \ \ \ \textcolor{comment}{//\ Check\ if\ two\ positions\ are\ considered\ close\ enough}}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00021}00021\ \ \ \ \ \textcolor{keyword}{auto}\ nearPos\ =\ [\&](\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\&\ b)\ -\/>\ \textcolor{keywordtype}{bool}\ \{}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (a\ -\/\ b).length()\ <=\ \mbox{\hyperlink{serveranddrone_8h_a40f3ef94787cd79ae4914b081d968946}{minDistance}};}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00023}00023\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00025}00025\ \ \ \ \ \textcolor{comment}{//\ Cannot\ move\ without\ a\ target\ or\ a\ current\ server}}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00026}00026\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_drone_a45ccef49593fe018527704107b3b25f7}{target}})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{keywordflow}{if}\ (!connectedTo)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00029}00029\ \ \ \ \ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ connectedPos(connectedTo-\/>position.x(),\ connectedTo-\/>position.y());}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00030}00030\ \ \ \ \ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ targetPos(\mbox{\hyperlink{class_drone_a45ccef49593fe018527704107b3b25f7}{target}}-\/>position.x(),\ \mbox{\hyperlink{class_drone_a45ccef49593fe018527704107b3b25f7}{target}}-\/>position.y());}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00032}00032\ \ \ \ \ \textcolor{comment}{//\ Final\ stop\ when\ reaching\ the\ target\ server}}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00033}00033\ \ \ \ \ \textcolor{keywordflow}{if}\ (connectedTo\ ==\ \mbox{\hyperlink{class_drone_a45ccef49593fe018527704107b3b25f7}{target}}\ \&\&\ nearPos(\mbox{\hyperlink{class_drone_a1c4e77ec65b47ddaae2a0e2d29f5ea6a}{position}},\ targetPos))\ \{}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_drone_a1c4e77ec65b47ddaae2a0e2d29f5ea6a}{position}}\ =\ targetPos;}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_drone_aa95e5b01daa9ba059d9d59e576052871}{destination}}\ =\ targetPos;}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ speed\ =\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}(0,0);}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00038}00038\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00040}00040\ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ current\ destination\ has\ been\ reached}}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00041}00041\ \ \ \ \ \textcolor{keywordflow}{if}\ (nearPos(\mbox{\hyperlink{class_drone_a1c4e77ec65b47ddaae2a0e2d29f5ea6a}{position}},\ \mbox{\hyperlink{class_drone_aa95e5b01daa9ba059d9d59e576052871}{destination}}))\ \{}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_drone_a1c4e77ec65b47ddaae2a0e2d29f5ea6a}{position}}\ =\ \mbox{\hyperlink{class_drone_aa95e5b01daa9ba059d9d59e576052871}{destination}};}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ speed\ =\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}(0,0);}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ connectedPos\ =\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}(connectedTo-\/>position.x(),\ connectedTo-\/>position.y());}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ drone\ is\ at\ its\ current\ server}}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nearPos(\mbox{\hyperlink{class_drone_a1c4e77ec65b47ddaae2a0e2d29f5ea6a}{position}},\ connectedPos))\ \{}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Follow\ the\ shortest\ path\ to\ the\ target\ server}}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_link}{Link}}*\ next\ =\ connectedTo-\/>bestDistance[\mbox{\hyperlink{class_drone_a45ccef49593fe018527704107b3b25f7}{target}}-\/>id].first;}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!next)\ \{}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_drone_aa95e5b01daa9ba059d9d59e576052871}{destination}}\ =\ connectedPos;}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_drone_aa95e5b01daa9ba059d9d59e576052871}{destination}}\ =\ next-\/>\mbox{\hyperlink{class_link_abbfaf14fe589d975378a970b135bb1c9}{getEdgeCenter}}();}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ drone\ is\ crossing\ an\ edge\ center}}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_link}{Link}}*\ crossed\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{class_link}{Link}}*\ l\ :\ connectedTo-\/>links)\ \{}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nearPos(\mbox{\hyperlink{class_drone_a1c4e77ec65b47ddaae2a0e2d29f5ea6a}{position}},\ l-\/>\mbox{\hyperlink{class_link_abbfaf14fe589d975378a970b135bb1c9}{getEdgeCenter}}()))\ \{}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ crossed\ =\ l;}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ no\ edge\ was\ crossed,\ return\ to\ current\ server}}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!crossed)\ \{}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_drone_aa95e5b01daa9ba059d9d59e576052871}{destination}}\ =\ connectedPos;}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Switch\ to\ the\ adjacent\ server\ area}}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_server}{Server}}*\ opp\ =\ (crossed-\/>\mbox{\hyperlink{class_link_ad8d98f25c42980a9db35299ee9e440fc}{getNode1}}()\ ==\ connectedTo)\ ?\ crossed-\/>\mbox{\hyperlink{class_link_a54716a0cb68ac71c1cb46e113e2789ee}{getNode2}}()\ :\ crossed-\/>\mbox{\hyperlink{class_link_ad8d98f25c42980a9db35299ee9e440fc}{getNode1}}();}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!opp)\ \{}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_drone_aa95e5b01daa9ba059d9d59e576052871}{destination}}\ =\ connectedPos;}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ connectedTo\ =\ opp;}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_drone_aa95e5b01daa9ba059d9d59e576052871}{destination}}\ =\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}(opp-\/>\mbox{\hyperlink{class_server_a17cfe740f9ce3cc3699c4f18f48a1f81}{position}}.x(),\ opp-\/>\mbox{\hyperlink{class_server_a17cfe740f9ce3cc3699c4f18f48a1f81}{position}}.y());}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00082}00082\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00084}00084\ \ \ \ \ \textcolor{comment}{//\ Compute\ direction\ and\ distance\ to\ destination}}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00085}00085\ \ \ \ \ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ dir\ =\ \mbox{\hyperlink{class_drone_aa95e5b01daa9ba059d9d59e576052871}{destination}}\ -\/\ \mbox{\hyperlink{class_drone_a1c4e77ec65b47ddaae2a0e2d29f5ea6a}{position}};}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00086}00086\ \ \ \ \ \textcolor{keywordtype}{double}\ d\ =\ dir.\mbox{\hyperlink{class_vector2_d_ab08635b0482451cc43b5b399034eff2f}{length}}();}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00088}00088\ \ \ \ \ \textcolor{comment}{//\ Slow\ down\ when\ approaching\ the\ destination}}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00089}00089\ \ \ \ \ \textcolor{keywordflow}{if}\ (d\ <\ \mbox{\hyperlink{serveranddrone_8h_a9d0b4474de1fe1da388fdea356392725}{slowDownDistance}})\ \{}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ speed\ =\ (d\ *\ \mbox{\hyperlink{serveranddrone_8h_aa6904c8b762007522a04239ec78f723c}{speedLocal}}\ /\ \mbox{\hyperlink{serveranddrone_8h_a9d0b4474de1fe1da388fdea356392725}{slowDownDistance}})\ *\ dir;}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (speed.length()\ >\ \mbox{\hyperlink{serveranddrone_8h_a88d77fa6e9b5c5790fd1829f1a1c56a2}{speedMax}})\ \{}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ speed.normalize();}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ speed\ *=\ \mbox{\hyperlink{serveranddrone_8h_a88d77fa6e9b5c5790fd1829f1a1c56a2}{speedMax}};}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00095}00095\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Accelerate\ toward\ destination}}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ speed\ +=\ (\mbox{\hyperlink{serveranddrone_8h_a6e0b15157dd0b2921b9d1b35ae10661a}{accelation}}\ *\ dt\ /\ d)\ *\ dir;}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (speed.length()\ >\ \mbox{\hyperlink{serveranddrone_8h_a88d77fa6e9b5c5790fd1829f1a1c56a2}{speedMax}})\ \{}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ speed.normalize();}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ speed\ *=\ \mbox{\hyperlink{serveranddrone_8h_a88d77fa6e9b5c5790fd1829f1a1c56a2}{speedMax}};}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00102}00102\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00104}00104\ \ \ \ \ \textcolor{comment}{//\ Update\ position}}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00105}00105\ \ \ \ \ \mbox{\hyperlink{class_drone_a1c4e77ec65b47ddaae2a0e2d29f5ea6a}{position}}\ +=\ (dt\ *\ speed);}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00107}00107\ \ \ \ \ \textcolor{comment}{//\ Update\ orientation\ (azimuth)\ from\ velocity\ direction}}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00108}00108\ \ \ \ \ \textcolor{keywordtype}{double}\ sl\ =\ speed.length();}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00109}00109\ \ \ \ \ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ Vn\ =\ (1.0\ /\ sl)\ *\ speed;}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00111}00111\ \ \ \ \ \textcolor{keywordflow}{if}\ (Vn.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}}\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_drone_adb35c0604f9e7fd1b35fc6bd3fb740a7}{azimut}}\ =\ (Vn.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}}\ >\ 0)\ ?\ -\/90.0\ :\ 90.0;}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00113}00113\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (Vn.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}}\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00114}00114\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_drone_adb35c0604f9e7fd1b35fc6bd3fb740a7}{azimut}}\ =\ 180.0\ -\/\ 180.0\ *\ atan(Vn.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}}\ /\ Vn.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}})\ /\ M\_PI;}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00115}00115\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00116}00116\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_drone_adb35c0604f9e7fd1b35fc6bd3fb740a7}{azimut}}\ =\ -\/180.0\ *\ atan(Vn.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}}\ /\ Vn.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}})\ /\ M\_PI;}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00117}00117\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00118}00118\ \}}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00121}\mbox{\hyperlink{class_drone_a5b9999237d302e66a007834d662f087f}{00121}}\ \mbox{\hyperlink{class_server}{Server}}*\ \mbox{\hyperlink{class_drone_a5b9999237d302e66a007834d662f087f}{Drone::overflownArea}}(QList<Server>\&\ list)\ \{}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00122}00122\ \ \ \ \ \textcolor{keyword}{auto}\ it=list.begin();}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00123}00123\ \ \ \ \ \textcolor{keywordflow}{while}\ (it!=list.end()\ \&\&\ !it-\/>area.contains(\mbox{\hyperlink{class_drone_a1c4e77ec65b47ddaae2a0e2d29f5ea6a}{position}}))\ \{}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ it++;}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00125}00125\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00126}00126\ \ \ \ \ connectedTo=\ it!=list.end()?\&(*it):\textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00127}00127\ \ \ \ \ \textcolor{keywordflow}{return}\ connectedTo;}
+\DoxyCodeLine{\Hypertarget{serveranddrone_8cpp_source_l00128}00128\ \}}
+
+\end{DoxyCode}

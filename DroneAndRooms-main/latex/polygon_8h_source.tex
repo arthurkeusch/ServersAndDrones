@@ -1,0 +1,240 @@
+\doxysection{polygon.\+h}
+\hypertarget{polygon_8h_source}{}\label{polygon_8h_source}\mbox{\hyperlink{polygon_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00007}00007\ \textcolor{preprocessor}{\#ifndef\ POLYGON\_H}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00008}00008\ \textcolor{preprocessor}{\#define\ POLYGON\_H}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{vector2d_8h}{vector2d.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{determinant_8h}{determinant.h}}>}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <QPainter>}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <QDebug>}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00018}\mbox{\hyperlink{class_triangle}{00018}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_triangle_ad7c90ec4fd75d4aa80fbd3ac78a3cf0b}{Triangle}}\ \{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00019}00019\ \ \ \ \ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ tabPts[3];\ }
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00020}00020\ \ \ \ \ \textcolor{keywordtype}{bool}\ isDelaunay=\textcolor{keyword}{false};\ }
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00021}00021\ \ \ \ \ \textcolor{keywordtype}{bool}\ isFlippable=\textcolor{keyword}{false};\ }
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00022}00022\ \ \ \ \ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ circumCenter;\ }
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00023}00023\ \ \ \ \ \textcolor{keywordtype}{float}\ circumRadius;\ }
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00024}00024\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00032}\mbox{\hyperlink{class_triangle_ad7c90ec4fd75d4aa80fbd3ac78a3cf0b}{00032}}\ \ \ \ \ \mbox{\hyperlink{class_triangle_ad7c90ec4fd75d4aa80fbd3ac78a3cf0b}{Triangle}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ \&p\_p0,\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ \&p\_p1,\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ \&p\_p2)\ \{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00033}00033\ \ \ \ \ \ \ \ \ tabPts[0]=p\_p0;}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00034}00034\ \ \ \ \ \ \ \ \ tabPts[1]=p\_p1;}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00035}00035\ \ \ \ \ \ \ \ \ tabPts[2]=p\_p2;}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00036}00036\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_triangle_abc1d2380e0daf2b13ef96e3e89f01a2d}{computeCircle}}();}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00037}00037\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00038}\mbox{\hyperlink{class_triangle_a5ce0d3dda37977e881560fc2b1f4d06c}{00038}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_triangle_a5ce0d3dda37977e881560fc2b1f4d06c}{update}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ \&p\_p0,\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ \&p\_p1,\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ \&p\_p2)\ \{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00039}00039\ \ \ \ \ \ \ \ \ tabPts[0]=p\_p0;}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00040}00040\ \ \ \ \ \ \ \ \ tabPts[1]=p\_p1;}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00041}00041\ \ \ \ \ \ \ \ \ tabPts[2]=p\_p2;}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00042}00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_triangle_abc1d2380e0daf2b13ef96e3e89f01a2d}{computeCircle}}();}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00043}00043\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00044}00044\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_triangle_abc1d2380e0daf2b13ef96e3e89f01a2d}{computeCircle}}();}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00050}\mbox{\hyperlink{class_triangle_a1cd5f240a136135fbe8b0532253ceeee}{00050}}\ \ \ \ \ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ \mbox{\hyperlink{class_triangle_a1cd5f240a136135fbe8b0532253ceeee}{operator[]}}(\textcolor{keywordtype}{int}\ i)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ tabPts[i];\ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00056}\mbox{\hyperlink{class_triangle_aece1b4aed67a375477b3e9a27615602c}{00056}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_triangle_aece1b4aed67a375477b3e9a27615602c}{isCCW}}()\ \{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00057}00057\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ AB\ =\ (tabPts[1])-\/(tabPts[0]);}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00058}00058\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ AP\ =\ (tabPts[2])-\/(tabPts[0]);}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ z\ component\ of\ AB\ x\ AP}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (AB.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}}*AP.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}}-\/AB.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}}*AP.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}})>0;}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00061}00061\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00067}\mbox{\hyperlink{class_triangle_ab7cc1c7ee3ae5c8f0791e450ccece646}{00067}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_triangle_ab7cc1c7ee3ae5c8f0791e450ccece646}{containsOneOf}}(\textcolor{keyword}{const}\ QList<Vector2D*>\ \&lst)\ \{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it=lst.begin();}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00069}00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (it!=lst.end()\ \&\&\ !\mbox{\hyperlink{class_triangle_ac1389397f3d8178951a6a30abcc90c14}{contains}}(*it))\ \{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ it++;}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00071}00071\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00072}00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (it!=lst.end());}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00073}00073\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00075}\mbox{\hyperlink{class_triangle_ac1389397f3d8178951a6a30abcc90c14}{00075}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_triangle_ac1389397f3d8178951a6a30abcc90c14}{contains}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ \&ptrPt)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_triangle_a700145422a1c964a70fae2637fe4619f}{isOnTheLeft}}(ptrPt,0)\ \&\&}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_triangle_a700145422a1c964a70fae2637fe4619f}{isOnTheLeft}}(ptrPt,1)\ \&\&}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_triangle_a700145422a1c964a70fae2637fe4619f}{isOnTheLeft}}(ptrPt,2);}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00079}00079\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00086}\mbox{\hyperlink{class_triangle_a700145422a1c964a70fae2637fe4619f}{00086}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_triangle_a700145422a1c964a70fae2637fe4619f}{isOnTheLeft}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ \&p,\ \textcolor{keywordtype}{int}\ i)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00087}00087\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ AB\ =\ (tabPts[(i+1)\%3])-\/(tabPts[i]);}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00088}00088\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ AP\ =\ p-\/(tabPts[i]);}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00089}00089\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ z\ component\ of\ AB\ x\ AP}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00090}00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (AB.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}}*AP.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}}-\/AB.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}}*AP.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}})>=0;}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00091}00091\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00092}\mbox{\hyperlink{class_triangle_abc3785b96e03fde1b5f594f8ed6afabb}{00092}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_triangle_abc3785b96e03fde1b5f594f8ed6afabb}{print}}()\ \{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00093}00093\ \ \ \ \ \ \ \ \ qDebug()\ <<\ tabPts[0].x\ <<\ \textcolor{stringliteral}{"{},"{}}\ <<\ tabPts[0].y\ <<\ \textcolor{stringliteral}{"{}/"{}}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00094}00094\ \ \ \ \ \ \ \ \ \ <<\ tabPts[1].x\ <<\ \textcolor{stringliteral}{"{},"{}}\ <<\ tabPts[1].y\ <<\ \textcolor{stringliteral}{"{}/"{}}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ tabPts[2].x\ <<\ \textcolor{stringliteral}{"{},"{}}\ <<\ tabPts[2].y;}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00096}00096\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00102}\mbox{\hyperlink{class_triangle_a5b86d43152f84325da7c657650e1f3f1}{00102}}\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_triangle_a5b86d43152f84325da7c657650e1f3f1}{area}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00103}00103\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ AB=(tabPts[1])-\/(tabPts[0]);}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00104}00104\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ AC=(tabPts[2])-\/(tabPts[0]);}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00105}00105\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0.005*(AB.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}}*AC.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}}-\/AB.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}}*AC.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}});\ \textcolor{comment}{//\ convertion\ to\ u²\ unit}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00106}00106\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00108}\mbox{\hyperlink{class_triangle_aff1adbe2ac0aa1e86e455677a01c9e67}{00108}}\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_triangle_aff1adbe2ac0aa1e86e455677a01c9e67}{setDelaunay}}(\textcolor{keywordtype}{bool}\ d,\ \textcolor{keywordtype}{bool}\ f)\ \{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00109}00109\ \ \ \ \ \ \ \ \ isDelaunay=d;}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00110}00110\ \ \ \ \ \ \ \ \ isFlippable=f;}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00111}00111\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00112}\mbox{\hyperlink{class_triangle_a0684af02c728a46e5f2560f59a807e42}{00112}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_triangle_a0684af02c728a46e5f2560f59a807e42}{canBeFlipped}}()\ \{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00113}00113\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (!isDelaunay\ \&\&\ isFlippable);}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00114}00114\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00115}\mbox{\hyperlink{class_triangle_a6cd8236a25745922faf396bf4bbd6ded}{00115}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_triangle_a6cd8236a25745922faf396bf4bbd6ded}{checkDelaunay}}(\textcolor{keyword}{const}\ QVector<Vector2D>\ \&tabVertices)\ \{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00116}00116\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it=tabVertices.begin();}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00117}00117\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (it!=tabVertices.end()\ \&\&\ \mbox{\hyperlink{class_triangle_a71dd9ecc4d9255bcbc3b47ca14bba482}{circleContains}}(*it))\ \{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ it++;}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00119}00119\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00120}00120\ \ \ \ \ \ \ \ \ isDelaunay\ =\ it==tabVertices.end();}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00121}00121\ \ \ \ \ \ \ \ \ isFlippable=\textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00122}00122\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ isDelaunay;}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00123}00123\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00124}\mbox{\hyperlink{class_triangle_a76ddb58b367b4c8464a37d567e9941ca}{00124}}\ \ \ \ \ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ \mbox{\hyperlink{class_triangle_a76ddb58b367b4c8464a37d567e9941ca}{getNextVertex}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ \&pt)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00125}00125\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pt==tabPts[0])\ \textcolor{keywordflow}{return}\ tabPts[1];}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00126}00126\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pt==tabPts[1])\ \textcolor{keywordflow}{return}\ tabPts[2];}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00127}00127\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pt==tabPts[2])\ \textcolor{keywordflow}{return}\ tabPts[0];}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00128}00128\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}(0,0);}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00129}00129\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00131}\mbox{\hyperlink{class_triangle_a633a1fe1e094c57b1d04e4845afc4d8e}{00131}}\ \ \ \ \ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ \mbox{\hyperlink{class_triangle_a633a1fe1e094c57b1d04e4845afc4d8e}{getPrevVertex}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ \&pt)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00132}00132\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pt==tabPts[0])\ \textcolor{keywordflow}{return}\ tabPts[2];}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00133}00133\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pt==tabPts[1])\ \textcolor{keywordflow}{return}\ tabPts[0];}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00134}00134\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pt==tabPts[2])\ \textcolor{keywordflow}{return}\ tabPts[1];}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00135}00135\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}(0,0);}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00136}00136\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00137}\mbox{\hyperlink{class_triangle_a7715e13bb0a83af49b017f5263e03b7b}{00137}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_triangle_a7715e13bb0a83af49b017f5263e03b7b}{hasEdge}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\&\ A,\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\&\ B)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00138}00138\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (A==tabPts[0]\ \&\&\ B==tabPts[1])||}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (A==tabPts[1]\ \&\&\ B==tabPts[2])||}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (A==tabPts[2]\ \&\&\ B==tabPts[0]);}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00141}00141\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00142}\mbox{\hyperlink{class_triangle_a8f527cdb5a9876aadf251c3fa3d230d3}{00142}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_triangle_a8f527cdb5a9876aadf251c3fa3d230d3}{hasVertex}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ \&M)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00143}00143\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (M==tabPts[0])||(M==tabPts[1])||(M==tabPts[2]);}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00144}00144\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00145}\mbox{\hyperlink{class_triangle_ac627bebcd4c69f22e652ba3661e19343}{00145}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_triangle_ac627bebcd4c69f22e652ba3661e19343}{operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_triangle_ad7c90ec4fd75d4aa80fbd3ac78a3cf0b}{Triangle}}\ \&other)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00146}00146\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (tabPts[0]==other.tabPts[0]\ ||\ tabPts[0]==other.tabPts[1]\ ||\ tabPts[0]==other.tabPts[2])\ \&\&}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (tabPts[1]==other.tabPts[0]\ ||\ tabPts[1]==other.tabPts[1]\ ||\ tabPts[1]==other.tabPts[2])\ \&\&}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (tabPts[2]==other.tabPts[0]\ ||\ tabPts[2]==other.tabPts[1]\ ||\ tabPts[2]==other.tabPts[2]);}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00149}00149\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00150}\mbox{\hyperlink{class_triangle_a71dd9ecc4d9255bcbc3b47ca14bba482}{00150}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_triangle_a71dd9ecc4d9255bcbc3b47ca14bba482}{circleContains}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\&M)\ \{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00151}00151\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_matrix33}{Matrix33}}\ mat;}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00152}00152\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ A\ =\ tabPts[0];}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00153}00153\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ B\ =\ tabPts[1];}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00154}00154\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ C\ =\ tabPts[2];}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00155}00155\ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{class_matrix33_a78b7575191a5193b403a29a387ea9012}{m}}[0][0]\ =\ (A.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}}\ -\/\ M.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}});}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00156}00156\ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{class_matrix33_a78b7575191a5193b403a29a387ea9012}{m}}[0][1]\ =\ (A.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}}\ -\/\ M.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}});}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00157}00157\ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{class_matrix33_a78b7575191a5193b403a29a387ea9012}{m}}[0][2]\ =\ (A.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}}*A.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}}-\/M.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}}*M.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}})+(A.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}}*A.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}}-\/M.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}}*M.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}});}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00158}00158\ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{class_matrix33_a78b7575191a5193b403a29a387ea9012}{m}}[1][0]\ =\ (B.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}}\ -\/\ M.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}});}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00159}00159\ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{class_matrix33_a78b7575191a5193b403a29a387ea9012}{m}}[1][1]\ =\ (B.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}}\ -\/\ M.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}});}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00160}00160\ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{class_matrix33_a78b7575191a5193b403a29a387ea9012}{m}}[1][2]\ =\ (B.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}}*B.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}}-\/M.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}}*M.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}})+(B.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}}*B.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}}-\/M.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}}*M.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}});}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00161}00161\ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{class_matrix33_a78b7575191a5193b403a29a387ea9012}{m}}[2][0]\ =\ (C.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}}\ -\/\ M.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}});}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00162}00162\ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{class_matrix33_a78b7575191a5193b403a29a387ea9012}{m}}[2][1]\ =\ (C.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}}\ -\/\ M.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}});}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00163}00163\ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{class_matrix33_a78b7575191a5193b403a29a387ea9012}{m}}[2][2]\ =\ (C.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}}*C.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}}-\/M.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}}*M.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}})+(C.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}}*C.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}}-\/M.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}}*M.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}});}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00164}00164\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mat.\mbox{\hyperlink{class_matrix33_a91bdfd4a4ea7467fbb843761a830f090}{determinant}}()<=0;\ \textcolor{comment}{//\ positive\ for\ outside\ points\ and\ equal\ for\ A,B,C}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00165}00165\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00166}\mbox{\hyperlink{class_triangle_a5b9ee1870feb5dc1b1dcd84791f539cc}{00166}}\ \ \ \ \ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ \mbox{\hyperlink{class_triangle_a5b9ee1870feb5dc1b1dcd84791f539cc}{getCenter}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00167}00167\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ circumCenter;}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00168}00168\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00169}\mbox{\hyperlink{class_triangle_ad19e67d5fa60401d111c995ede615261}{00169}}\ \ \ \ \ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ \mbox{\hyperlink{class_triangle_ad19e67d5fa60401d111c995ede615261}{getEdgeTo}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ \&p)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00170}00170\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tabPts[0]==p)\ \textcolor{keywordflow}{return}\ tabPts[2];}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00171}00171\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tabPts[1]==p)\ \textcolor{keywordflow}{return}\ tabPts[0];}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00172}00172\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tabPts[2]==p)\ \textcolor{keywordflow}{return}\ tabPts[1];}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00173}00173\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00174}00174\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00176}\mbox{\hyperlink{class_triangle_a9dc4b8b9bf820d8a5f1cf3d618964247}{00176}}\ \ \ \ \ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ \mbox{\hyperlink{class_triangle_a9dc4b8b9bf820d8a5f1cf3d618964247}{getEdgeFrom}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ \&p)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00177}00177\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tabPts[0]==p)\ \textcolor{keywordflow}{return}\ tabPts[1];}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00178}00178\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tabPts[1]==p)\ \textcolor{keywordflow}{return}\ tabPts[2];}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00179}00179\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tabPts[2]==p)\ \textcolor{keywordflow}{return}\ tabPts[0];}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00180}00180\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00181}00181\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00183}\mbox{\hyperlink{class_triangle_aee8d72faa2afd283d42d9787eb86bbe3}{00183}}\ \ \ \ \ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ \mbox{\hyperlink{class_triangle_aee8d72faa2afd283d42d9787eb86bbe3}{nextEdgeNormal}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ pt)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00184}00184\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pt==tabPts[0])\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}(tabPts[1].y-\/tabPts[0].y,-\/(tabPts[1].x-\/tabPts[0].x));}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00185}00185\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pt==tabPts[1])\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}(tabPts[2].y-\/tabPts[1].y,-\/(tabPts[2].x-\/tabPts[1].x));}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00186}00186\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pt==tabPts[2])\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}(tabPts[0].y-\/tabPts[2].y,-\/(tabPts[0].x-\/tabPts[2].x));}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00187}00187\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}(0,0);}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00188}00188\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00189}00189\ }
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00190}\mbox{\hyperlink{class_triangle_a2a18a9d536f91f3307893cc9e45de358}{00190}}\ \ \ \ \ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ \mbox{\hyperlink{class_triangle_a2a18a9d536f91f3307893cc9e45de358}{previousEdgeNormal}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ pt)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00191}00191\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pt==tabPts[0])\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}(-\/(tabPts[2].y-\/tabPts[0].y),tabPts[2].x-\/tabPts[0].x);}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00192}00192\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pt==tabPts[1])\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}(-\/(tabPts[0].y-\/tabPts[1].y),tabPts[0].x-\/tabPts[1].x);}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00193}00193\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pt==tabPts[2])\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}(-\/(tabPts[1].y-\/tabPts[2].y),tabPts[1].x-\/tabPts[2].x);}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00194}00194\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}(0,0);}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00195}00195\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00196}00196\ }
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00197}00197\ \};}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00198}00198\ }
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00204}\mbox{\hyperlink{class_polygon}{00204}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_polygon_a9a2ff6255ba724c93681e914c6093478}{Polygon}}\ \{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00205}00205\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00207}00207\ \ \ \ \ QVector<Vector2D>\ tabPts;\ }
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00208}00208\ \ \ \ \ QVector<Triangle>\ triangles;\ }
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00209}00209\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00213}00213\ \ \ \ \ \mbox{\hyperlink{class_polygon_ac183e712f8be1e13f1c9d5b4d4512ead}{Polygon}}(QVector<Vector2D>\ \&points);}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00214}\mbox{\hyperlink{class_polygon_ac183e712f8be1e13f1c9d5b4d4512ead}{00214}}\ \ \ \ \ \mbox{\hyperlink{class_polygon_ac183e712f8be1e13f1c9d5b4d4512ead}{Polygon}}()\ \{\}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00215}\mbox{\hyperlink{class_polygon_a642869f1a334e30ec7c9ccddedf426ae}{00215}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_polygon_a642869f1a334e30ec7c9ccddedf426ae}{remove}}(\textcolor{keywordtype}{int}\ i)\ \{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00216}00216\ \ \ \ \ \ \ \ \ assert(i>=0\ \&\&\ i<tabPts.size()-\/1);}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00217}00217\ \ \ \ \ \ \ \ \ tabPts.removeAt(i);}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00218}00218\ \ \ \ \ \ \ \ \ tabPts[tabPts.size()-\/1]=tabPts[0];}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00219}00219\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00220}00220\ }
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00225}\mbox{\hyperlink{class_polygon_a16751de5da73c143e0b80cee52c89ee5}{00225}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_polygon_a16751de5da73c143e0b80cee52c89ee5}{nbVertices}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ tabPts.size()==0?0:tabPts.size()-\/1;\ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00232}00232\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_polygon_ab25909e3fe6c9d728eb3f47feab7fdf1}{addVertex}}(\textcolor{keywordtype}{float}\ x,\textcolor{keywordtype}{float}\ y);}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00233}\mbox{\hyperlink{class_polygon_aba6cf07e80149e49a7ca76ca79675d4a}{00233}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_polygon_aba6cf07e80149e49a7ca76ca79675d4a}{addVertex}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ \&v)\ \{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00234}00234\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_polygon_ab25909e3fe6c9d728eb3f47feab7fdf1}{addVertex}}(v.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}},v.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}});}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00235}00235\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00236}\mbox{\hyperlink{class_polygon_aae76b61c30007e637fa8deaacfaa0213}{00236}}\ \ \ \ \ QPair<Vector2D,Vector2D>\ \mbox{\hyperlink{class_polygon_aae76b61c30007e637fa8deaacfaa0213}{getEdge}}(\textcolor{keywordtype}{int}\ i)\ \{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00237}00237\ \ \ \ \ \ \ \ \ i=i\%\mbox{\hyperlink{class_polygon_a16751de5da73c143e0b80cee52c89ee5}{nbVertices}}();}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00238}00238\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{tabPts[i],tabPts[i+1]\};}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00239}00239\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00244}00244\ \ \ \ \ QPair<Vector2D,Vector2D>\ \mbox{\hyperlink{class_polygon_a095e27925f5899fcbb077b2436b99618}{getBoundingBox}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00251}\mbox{\hyperlink{class_polygon_ab35242ef62378fb3ca0e240f096e0e06}{00251}}\ \ \ \ \ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ \mbox{\hyperlink{class_polygon_ab35242ef62378fb3ca0e240f096e0e06}{operator[]}}(\textcolor{keywordtype}{int}\ i)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ tabPts[i];\ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00260}00260\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_polygon_a6cebd7d714871a2c908c7df919f49204}{draw}}(QPainter\ \&painter)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00264}00264\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_polygon_a760ebc548ed15e307ae7471577de6eef}{triangulate}}();}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00265}00265\ }
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00272}\mbox{\hyperlink{class_polygon_aa57d77ccbdb5fc5ff9ad80de502d3b3a}{00272}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_polygon_aa57d77ccbdb5fc5ff9ad80de502d3b3a}{isOnTheLeft}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ \&p,\ \textcolor{keywordtype}{int}\ i)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00273}00273\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ AB\ =\ tabPts[i+1]-\/tabPts[i];}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00274}00274\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ AP\ =\ p-\/tabPts[i];}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00275}00275\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ z\ component\ of\ AB\ x\ AP}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00276}00276\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (AB.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}}*AP.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}}-\/AB.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}}*AP.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}})>=0;}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00277}00277\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00285}\mbox{\hyperlink{class_polygon_af360b9add7f9c5d630a6cefc9f370df6}{00285}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_polygon_af360b9add7f9c5d630a6cefc9f370df6}{isOnTheLeft}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ *p,\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ *A,\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ *B)\ \{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00286}00286\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ AB\ =\ *B-\/*A,AP\ =\ *p-\/*A;}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00287}00287\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (AB.\mbox{\hyperlink{class_vector2_d_aeb4253ba6555251d010ea4450619029e}{x}}*AP.y\ -\/\ AB.\mbox{\hyperlink{class_vector2_d_a85215519d3f71d0e6be7d636346f3b7d}{y}}*AP.x)>=0;}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00288}00288\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00293}\mbox{\hyperlink{class_polygon_a9b21d68da63b6727e2abd1d67ffb1e87}{00293}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_polygon_a9b21d68da63b6727e2abd1d67ffb1e87}{isConvex}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00294}00294\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ N=\mbox{\hyperlink{class_polygon_a16751de5da73c143e0b80cee52c89ee5}{nbVertices}}();}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00295}00295\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (N<3)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00296}00296\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ i=0;}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00297}00297\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (i<N\ \&\&\ \mbox{\hyperlink{class_polygon_aa57d77ccbdb5fc5ff9ad80de502d3b3a}{isOnTheLeft}}(tabPts[(i+2)\%N],i))\ \{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00298}00298\ \ \ \ \ \ \ \ \ \ \ \ \ i++;}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00299}00299\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00300}00300\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ i>=N;}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00301}00301\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00302}\mbox{\hyperlink{class_polygon_a03036a30fedc6dcd90b0b40e4c2d57d3}{00302}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_polygon_a03036a30fedc6dcd90b0b40e4c2d57d3}{isAVertex}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ \&v)\ \{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00303}00303\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ itV=tabPts.begin();}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00304}00304\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (itV!=tabPts.end()\ \&\&\ !(*itV==v))\ \{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00305}00305\ \ \ \ \ \ \ \ \ \ \ \ \ itV++;}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00306}00306\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00307}00307\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (itV!=tabPts.end());}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00308}00308\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00309}\mbox{\hyperlink{class_polygon_a8f47a4e576442240fb4decd7ee104f37}{00309}}\ \ \ \ \ QVector<Triangle>\ \mbox{\hyperlink{class_polygon_a8f47a4e576442240fb4decd7ee104f37}{getTriangles}}()\ \{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00310}00310\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ triangles;}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00311}00311\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00316}\mbox{\hyperlink{class_polygon_a4d0afaa20413f6cb532daa57c0a59f1b}{00316}}\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_polygon_a4d0afaa20413f6cb532daa57c0a59f1b}{area}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00318}00318\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ res=0;}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00319}00319\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \&t:triangles)\ \{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00320}00320\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ res+=t.area();}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00321}00321\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00322}00322\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ res;}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00323}00323\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00324}00324\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_polygon_afe3476de4fea37e4aa450af418a032a5}{clip}}(\textcolor{keywordtype}{int}\ x0,\textcolor{keywordtype}{int}\ y0,\textcolor{keywordtype}{int}\ x1,\textcolor{keywordtype}{int}\ y1);}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00325}\mbox{\hyperlink{class_polygon_a65739edd66950931690c8cf556d92ed4}{00325}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_polygon_a65739edd66950931690c8cf556d92ed4}{insertPoint}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\ \&p,\textcolor{keywordtype}{int}\ index)\ \{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00326}00326\ \ \ \ \ \ \ \ \ tabPts.insert(index,p);}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00327}00327\ \ \ \ \ \ \ \ \ tabPts[tabPts.size()-\/1]=tabPts[0];}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00328}00328\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00329}\mbox{\hyperlink{class_polygon_a56bef00713b585dcfb2c8a2bb893d4be}{00329}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_polygon_a56bef00713b585dcfb2c8a2bb893d4be}{contains}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vector2_d}{Vector2D}}\&\ pt)\ \{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00330}00330\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ t\ =\ triangles.begin();}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00331}00331\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (t!=triangles.end()\ \&\&\ !t-\/>contains(pt))\ \{}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00332}00332\ \ \ \ \ \ \ \ \ \ \ \ \ t++;}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00333}00333\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00334}00334\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ t!=triangles.end();}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00335}00335\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00336}00336\ \};}
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00337}00337\ }
+\DoxyCodeLine{\Hypertarget{polygon_8h_source_l00338}00338\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ POLYGON\_H}}
+
+\end{DoxyCode}
